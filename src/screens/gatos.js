@@ -1,11 +1,9 @@
+
 Vue.component('info', {
-    props: {},
-    template: `
+    props: {}
+    ,
+    template:`
     <div class='product'>
-    
-        <div class='product-image'>
-            <img v-bind:src="image" v-bind:alt="altext" />
-        </div>
 
         <div class='product-info'>
             <h1>{{ title }}</h1>
@@ -16,19 +14,26 @@ Vue.component('info', {
             <p v-if="estado">Disponible para adopcion</p>
             <p v-else>Adoptado</p>
 
-            <ul>
-                <li v-for="detalle in variants">{{ detalle.variantSexo }}</li>
+            <ul style="list-style-type:none;">
+                <li v-for="detalle in variants">
+                    {{detalle.variantSexo}}
+                    {{detalle.variantEdad}}
+                    {{detalle.variantPelo}}
+                </li>
+                
             </ul>
 
-            <button v-on:click="addInteresados" :disabled="!estado" :class="{disabledButton: !estado}">Estoy interesado!</button>
+            <button class ="btn success" v-if="estado" v-on:click="addInteresados">
+                Estoy interesado!
+            </button>
         </div>
     </div>`,
     data() {
         return {
-            nombreA: 'Nombre ',
+            nombreA : "Gatito",
             product: 'Michi ',
             description: 'Descripcion del michi puesto por quien lo esta dando en adopcion',
-            image: './assets/Chico_excremento.jpg',
+            image: '../assets/Chico_excremento.jpg',
             altext: 'popo de arale',
             esterilizado: true,
             estado: true,
@@ -49,16 +54,16 @@ Vue.component('info', {
     },
     methods: {
         addInteresados() {
-            this.$emit('add-michi')
+            this.$emit('ingresar-gato')
         }
     },
     computed: {
         title() {
-            return this.nombreA + ' ' + this.product
+            return this.nombreA
         }
     }
 
-})
+});
 
 var app = new Vue({
     el: '#app',
@@ -70,4 +75,4 @@ var app = new Vue({
             this.interesados += 1
         }
     }
-})
+});

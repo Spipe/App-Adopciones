@@ -1,11 +1,13 @@
 body {
+    background: hsl(180, 1%, 79%);
     font-family: tahoma;
     color: #282828;
     margin: 0px;
 }
 
+
 .nav-bar {
-    background: linear-gradient(-90deg, #84CF6A, #16C0B0);
+    background: rgb(27, 27, 27);
     height: 60px;
     margin-bottom: 15px;
 }
@@ -17,8 +19,8 @@ body {
 }
 
 img {
-    border: 1px solid #d8d8d8;
-    width: 70%;
+    border-radius: 50%;
+    width: 50%;
     margin: 40px;
     box-shadow: 0px .5px 1px #d8d8d8;
 }
@@ -31,6 +33,7 @@ img {
 .product-info {
     margin-top: 10px;
     width: 50%;
+    background: #eee;
 }
 
 .color-box {
@@ -46,20 +49,25 @@ img {
     padding: 5px 20px;
 }
 
-button {
-    margin-top: 30px;
-    border: none;
-    background-color: #1E95EA;
-    color: white;
-    height: 40px;
-    width: 100px;
-    font-size: 14px;
+.btn {
+    border: black;
+    background-color: rgb(40, 167, 72);
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 12px;
 }
-
-.disabledButton {
-    background-color: #d8d8d8;
+.btn:hover {
+    background: #ffffff;
+    
 }
-
+  
+.success {
+    color: black;
+    border-radius: 12px;
+}
+  
 .review-form {
     width: 400px;
     padding: 20px;
