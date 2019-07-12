@@ -5,17 +5,17 @@ Vue.component('info', {
     template:`
     <div class='mascota-info'>
         <div class="foto-michi"><img v-bind:src="image"/></div>
-        <h2>{{ nombreA }}</h2>
+        <h2>{{ nombre }}</h2>
         <p v-if="estado">Disponible para adopcion</p>
         <p v-else>Adoptado</p>
     </div>`,
     data() {
         return {
-            nombreA : "Gatito",
+            nombre : "Turbochela",
             product: 'Michi ',
             image: '../assets/Chico_excremento.jpg',
             esterilizado: true,
-            estado: false
+            estado: true
         }
     }
 });
