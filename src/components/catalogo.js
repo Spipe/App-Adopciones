@@ -13,7 +13,7 @@ Vue.component('info', {
         return {
             nombre : "Turbochela",
             product: 'Michi ',
-            image: '../assets/Chico_excremento.jpg',
+            image: '../assets/Turbochela.jpeg',
             esterilizado: true,
             estado: true
         }
