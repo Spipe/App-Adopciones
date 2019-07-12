@@ -1,0 +1,27 @@
+#catalogo {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+}
+
+.mascota-info{
+    margin: .25em;
+    padding:.25em;
+    grid-column: 1 / 3;
+    grid-row: 1;
+    display: inline-block;
+    align-items: center;
+    background-color: rgb(163, 140, 189);
+}
+
+.foto-michi{
+    width: 100%;
+}
+
+.foto-michi img{
+    width: 100%;
+}
+
+.mascotas-info p{
+    margin: 0px;
+}

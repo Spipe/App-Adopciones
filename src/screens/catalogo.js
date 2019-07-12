@@ -3,8 +3,8 @@ Vue.component('info', {
     props: {}
     ,
     template:`
-    <div class='mascota-display'>
-        <img v-bind:src="image">
+    <div class='mascota-info'>
+        <div class="foto-michi"><img v-bind:src="image"></div>
         <h2>{{ nombreA }}</h2>
         <p v-if="estado">Disponible para adopcion</p>
         <p v-else>Adoptado</p>

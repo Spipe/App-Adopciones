@@ -6,38 +6,17 @@ body {
 }
 
 
-.nav-bar {
+nav {
+    display: block;
     background: rgb(27, 27, 27);
-    height: 60px;
-    margin-bottom: 15px;
+    height: 5em;
+    margin-bottom: 1.5em;
 }
 
 .product {
     display: flex;
     flex-flow: wrap;
     padding: 1rem;
-}
-
-img {
-    border-radius: 50%;
-    box-shadow: 0em .05em .05em #d8d8d8;
-}
-.mascota-display{
-    margin: .25em;
-    padding:.25em;
-    display: inline-block;
-    align-items: center;
-    background-color: rgb(163, 140, 189);
-}
-
-.mascotas-display img{
-
-    width: 10em;
-    margin: .5em;
-}
-
-.mascotas-display p{
-    margin: 0px;
 }
 
 .product-image {
