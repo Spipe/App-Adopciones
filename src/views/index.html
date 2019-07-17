@@ -5,17 +5,20 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" type='text/css' href="../styles/style.css">
+        <link rel="stylesheet" type='text/css' href="../styles/normalize.css">
+        <link rel="stylesheet" type='text/css' href="../styles/general.css">
+        <link rel="stylesheet" type='text/css' href="../styles/seleccion.css">
         <title>Adopcion Michis</title>
     </head>
 
-    <body id="app">
-        <div class='nav-bar'></div>
-        <div>
-            <info @ingresar-gato="updatemichis"></info>
+    <body>
+        <div id="app">
+            <cabecera></cabecera>
+            <info></info>
         </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
-        <script src="../screens/gatos.js"></script>
+        <script src="../components/seleccion.js"></script>
+        <script src="../components/cabecera.js"></script>
     </body>
 </html>

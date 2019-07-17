@@ -3,27 +3,25 @@ Vue.component('info', {
     props: {}
     ,
     template:`
-    <div class='product'>
-
+    <div class='product'>    
         <div class='product-info'>
             <h1>{{ title }}</h1>
+            <div class='image-select'>
+                <img v-bind:src="image"/>
+            </div>
             <p>{{ description }}</p>
             <p v-if="esterilizado">Esterilizado</p>
             <p v-else>No Esterilizado</p>
-
-            <p v-if="estado">Disponible para adopcion</p>
-            <p v-else>Adoptado</p>
-
-            <ul style="list-style-type:none;">
+            <ul>
                 <li v-for="detalle in variants">
-                    {{detalle.variantSexo}}
-                    {{detalle.variantEdad}}
-                    {{detalle.variantPelo}}
+                    <p v-if=detalle.variantSexo>Sexo: {{detalle.variantSexo}}</p>
+                    <p v-if=detalle.variantEdad>Edad: {{detalle.variantEdad}}</p>
+                    <p v-if=detalle.variantPelo>Tipo de pelo: {{detalle.variantPelo}}</p>
                 </li>
                 
             </ul>
 
-            <button class ="btn success" v-if="estado" v-on:click="addInteresados">
+            <button class ="btn-1" v-if="estado">
                 Estoy interesado!
             </button>
         </div>
@@ -33,8 +31,8 @@ Vue.component('info', {
             nombreA : "Gatito",
             product: 'Michi ',
             description: 'Descripcion del michi puesto por quien lo esta dando en adopcion',
-            image: '../assets/Chico_excremento.jpg',
-            altext: 'popo de arale',
+            image: '../assets/Turbochela.jpeg',
+            altext: 'Foto de la mascota',
             esterilizado: true,
             estado: true,
             variants: [{
@@ -47,7 +45,7 @@ Vue.component('info', {
                 },
                 {
                     variantId: 766,
-                    variantPelo: "Corto"
+                    variantPelo: "Largo"
                 }
             ]
         }
