@@ -1,114 +1,104 @@
 <template>
-  <main>
-    <v-toolbar dark color="primary">
-      <v-toolbar-title class="white--text">Título</v-toolbar-title>
-  
-      <v-spacer></v-spacer>
-
-      <v-toolbar-items>
-        <v-btn flat>Link One</v-btn>
-        <v-btn flat>Link Two</v-btn>
-        <v-btn flat>Link Three</v-btn>
-        <v-btn icon>
-          <v-icon>search</v-icon>
-        </v-btn>
-      </v-toolbar-items>
+  <div>
+    <header>
+      <navbar></navbar>
+    </header>
+    <main>
+      <div class="wrapper">
+        <aside>
+          <v-card class="aside-card with-radius" ripple=true>
+            
+          </v-card>
+        </aside>
         
-    </v-toolbar>
-
-    <div class="grid">
-      <aside></aside>
-      <div id="catalogo"> 
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
-        <elemento-catalogo></elemento-catalogo>
+        <div class="catalogo-grid"> 
+          <elemento-catalogo
+            v-for="michi in michis"
+            :key="michi.nombre"
+            :nombre="michi.nombre"
+            :esterilizado="michi.esterilizado"
+            :adoptado="michi.adoptado"
+            :imagen="michi.imagen">
+          </elemento-catalogo>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+    <footer>
+      <pie></pie>
+    </footer>
+  </div>
 </template>
 
 <script>
   import ElementoCatalogo from '../components/elemento-catalogo.vue'
+  import Navbar from '../components/navbar.vue'
+  import Pie from '../components/pie.vue'
+  import axios from 'axios'
 
   export default {
     name: 'catalogo',
     components: {
-      ElementoCatalogo
+      ElementoCatalogo,
+      Navbar,
+      Pie
+    },
+    data () {
+      return {
+        michis: null
+      }
+    },
+    mounted () {
+      axios.get('https://pokeapi.co/api/v2/pokemon/')
+        .then(response => {
+          let lista = [];
+          response.data.results.forEach(pokemon => {
+            lista.push({
+              nombre: pokemon.name.toUpperCase()[0] + pokemon.name.slice(1),
+              imagen: require(`../assets/images/${Math.floor(Math.random() * 4) + 1}.jpeg`),
+              esterilizado: Math.floor(Math.random() * 2) == 0,
+            });
+          })
+          
+          this.michis = lista.splice(0, 12);
+        })
     }
   }
 </script>
 
 <style>
-  .grid {
-    display: grid;
-    margin: 0.2;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    grid-gap: 10px;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
   }
 
-  #catalogo {
+
+  @media (min-width: 768px) {
+    .wrapper {
       display: grid;
-      grid-column-start: 2;
-      margin: 0.25em;
-      grid-template-columns: auto auto auto;
-      grid-gap: 10px;
+      grid-template-columns: 300px 1fr;
+    }
+
+    aside {
+      padding: 1rem 0 1rem 1rem !important;
+    }
+  }
+
+  .catalogo-grid {
+    flex: 1;
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 1rem;
   }
 
   aside {
-      grid-column-start: 1;
-      margin: 0px;
-      width: 250px;
-      background-color: brown;
+    width: 100%;
+    background-color: transparent;
+    padding: 1rem 1rem 0 1rem;
   }
 
-  @media only screen and (max-width: 800px) {
-      #catalogo {
-          grid-template-columns: auto auto auto;
-          grid-column-start: 1;
-          grid-row-start: 2;
-      }
-
-      aside {
-          grid-row-start: 1;
-          width: 100%;
-          height: 250px;
-      }
-  }
-
-  @media only screen and (max-width: 500px) {
-      #catalogo{
-          grid-template-columns: auto auto;
-          grid-column-start: 1;
-          grid-row-start: 2;
-      }
-      aside{
-          grid-row-start: 1;
-          width: 100%;
-          height: 250px;
-      }
-  }
-
-  @media only screen and (max-width: 250px) {
-      #catalogo {
-          grid-template-columns: auto;
-          grid-column-start: 1;
-          grid-row-start: 2;
-      }
-
-      aside {
-          grid-row-start: 1;
-          width: 100%;
-          height: 250px;
-      }
+  .aside-card {
+    height: 100%;
   }
 </style>
