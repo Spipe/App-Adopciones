@@ -24,7 +24,7 @@
                 nombreA : "TurboChela",
                 product: 'Michi ',
                 description: 'Descripcion del michi puesto por quien lo esta dando en adopcion',
-                image: '../assets/Turbochela.jpeg',
+                image: require('../assets/images/1.jpeg'),
                 altext: 'Foto de la mascota',
                 esterilizado: true,
                 estado: true,

@@ -1,55 +1,45 @@
-
 <template>
-    <div class='mascota-info'>
-        <div class="foto-michi">
-            <img v-bind:src="image"/>
+  <v-card class="with-radius" ripple="true">
+    <v-img
+        :src="imagen"
+        class="foto-michi">
+    </v-img>
+    <v-card-title primary-title>
+        <div>
+            <div class="headline">{{ nombre }}</div>
+            <span v-if="esterilizado">Esterilizado</span>
+            <span v-else>Cochino</span>
         </div>
-        <h2>{{ nombreA }}</h2>
-        <p v-if="estado">Disponible para adopcion</p>
-        <p v-else>Adoptado</p>
-    </div>
+    </v-card-title>
+    
+
+  </v-card>
 </template>
 
 
 <script>
   export default {
     name: 'elemento-catalogo',
-    data: () => {
-        return {
-            nombreA : "Gatito",
-            product: 'Michi ',
-            image: '../assets/images/turbochela.jpeg',
-            esterilizado: true,
-            estado: false
-        }
-    }
+    props: ['nombre', 'fotos', 'esterilizado', "imagen"]
   }
 </script>
 
 <style>
-    .mascota-info{
-        padding: 1em;
-        align-items: center;
-        text-align: center;
-        background-color: rgb(255, 248, 219);
+    .with-radius {
+        border-radius: 10px !important;
     }
 
-    .foto-michi{
-        width: 100%;
+    .foto-michi {
+        max-height: 200px;
         box-sizing: border-box;
+        color: black;
     }
 
-    .foto-michi img{
-        width: 100%;
-        border-radius: 50%;
-
-    }
-
-    .mascota-info h2{
+    .mascota-info h2 {
         margin: 0px;
     }
 
-    .mascota-info p{
+    .mascota-info p {
         margin: 0px;
     }
 </style>
