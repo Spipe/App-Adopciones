@@ -1,17 +1,15 @@
-
 <template>
-    <div>
-      <v-card class="product">
-        <h1>{{ nombreA }}</h1>
-        <v-carousel>
-            <v-carousel-item
-            v-for="(item,i) in items"
-            :key="i"
-            :src="item.src"
-            ></v-carousel-item>
-        </v-carousel>
-      </v-card >
-      
+    <div id="elemento-seleccion">    
+        <div class="product">
+            <h1>{{ nombreA }}</h1>
+            <v-carousel hide-delimiters>
+                <v-carousel-item
+                v-for="(item,i) in items"
+                :key="i"
+                :src="item.src"
+                ></v-carousel-item>
+            </v-carousel>
+        </div>
     </div>
 </template>
 
@@ -48,17 +46,28 @@
 </script>
 
 <style>
-    .product{
-    padding: 0.5em; 
+    #elemento-seleccion .product {
+    margin:0.5em;
     }
 
-    .product-info {
+    #elemento-seleccion .image-select{
+        width: 100%;
+        box-sizing: border-box; 
+    }
+
+    #elemento-seleccion .image-select img{
+        width: 25%;
+        border-radius: 50%;
+        align-content: center;
+    }
+
+    #elemento-seleccion .product-info {
         text-align:center;
         width: 100%;
         background: #eee;
     }
 
-    .btn-1 {
+    #elemento-seleccion .btn-1 {
         border: black;
         background-color: rgb(40, 167, 72);
         padding: 14px 28px;
@@ -66,12 +75,9 @@
         cursor: pointer;
         display: inline-block;
         border-radius: 12px;
+    }
+    #elemento-seleccion .btn:hover {
+        background: #ffffff;
         
     }
-    .seleccion-grid {
-    margin: 0.5rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 0.5rem;
-  }
 </style>

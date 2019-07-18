@@ -1,19 +1,21 @@
 <template>
-  <v-card class="with-radius" ripple="true">
-    <v-img
-        :src="imagen"
-        class="foto-michi">
-    </v-img>
-    <v-card-title primary-title>
-        <div>
-            <div class="headline">{{ nombre }}</div>
-            <span v-if="esterilizado">Esterilizado</span>
-            <span v-else>Cochino</span>
-        </div>
-    </v-card-title>
-    
+  <div  id="elemento-catalogo">
+    <v-card class="with-radius" ripple="true">
+      <v-img
+          :src="imagen"
+          class="foto-michi">
+      </v-img>
+      <v-card-title primary-title>
+          <div>
+              <div class="headline">{{ nombre }}</div>
+              <span v-if="esterilizado">Esterilizado</span>
+              <span v-else>Cochino</span>
+          </div>
+      </v-card-title>
+      
 
-  </v-card>
+    </v-card>
+  </div>
 </template>
 
 
@@ -25,21 +27,21 @@
 </script>
 
 <style>
-    .with-radius {
+    #elemento-catalogo .with-radius {
         border-radius: 10px !important;
     }
 
-    .foto-michi {
+    #elemento-catalogo .foto-michi {
         max-height: 200px;
         box-sizing: border-box;
         color: black;
     }
 
-    .mascota-info h2 {
+    #elemento-catalogo .mascota-info h2 {
         margin: 0px;
     }
 
-    .mascota-info p {
+    #elemento-catalogo .mascota-info p {
         margin: 0px;
     }
 </style>

@@ -10,7 +10,7 @@
             <elemento-seleccion></elemento-seleccion>
         </div>
         <aside>
-          <v-card class="aside-card with-radius">
+          <v-card class="with-radius">
             
           </v-card>
         </aside>
@@ -40,14 +40,14 @@
 <style>
     #seleccion .wrapper {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
 
 
     @media (min-width: 768px) {
         #seleccion .wrapper {
             display: grid;
-            flex-direction: row;
+            flex-direction: column;
         }
 
         #seleccion aside {
@@ -62,13 +62,9 @@
 
   #seleccion aside {
     background-color: red;
-    height: 200px;
+    height: 100px;
     padding: 1rem 1rem 0 1rem;
   }
-  #seleccion .aside-card {
-    height: 100%;
-  }
-
 </style>
 
 
