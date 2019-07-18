@@ -7,7 +7,7 @@ import VueAxios from 'vue-axios'
 import App from './app.vue'
 import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
-import Seleccion from './pages/seleccion.vue'
+import Mascota from './pages/mascota.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -31,8 +31,8 @@ const router = new VueRouter({
         component: Catalogo,
       },
       {
-        path: '/seleccion',
-        component: Seleccion
+        path: '/mascota',
+        component: Mascota
       }
     ],
     mode: 'history'

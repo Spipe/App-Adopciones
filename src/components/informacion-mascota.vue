@@ -1,6 +1,5 @@
-
 <template>
-    <div class='product'>    
+    <div id="informacion-mascota">    
         <div class='product-info'>
             <h1>{{ nombreA }}</h1>
             <div class='image-select'>
@@ -18,7 +17,7 @@
 
 <script>
     export default {
-        name: 'elemento-seleccion',
+        name: 'informacion-mascota',
         data: () => {
             return {
                 nombreA : "TurboChela",
@@ -35,29 +34,29 @@
 </script>
 
 <style>
-    .product {
-    height:100%;
-    width:100%;
+    #elemento-seleccion {
+        height:100%;
+        width:100%;
     }
 
-    .image-select{
+    #elemento-seleccion .image-select{
         width: 100%;
         box-sizing: border-box; 
     }
 
-    .image-select img{
+    #elemento-seleccion .image-select img{
         width: 25%;
         border-radius: 50%;
         align-content: center;
     }
 
-    .product-info {
+    #elemento-seleccion .product-info {
         text-align:center;
         width: 100%;
         background: #eee;
     }
 
-    .btn-1 {
+    #elemento-seleccion .btn-1 {
         border: black;
         background-color: rgb(40, 167, 72);
         padding: 14px 28px;
@@ -66,7 +65,7 @@
         display: inline-block;
         border-radius: 12px;
     }
-    .btn:hover {
+    #elemento-seleccion .btn:hover {
         background: #ffffff;
         
     }

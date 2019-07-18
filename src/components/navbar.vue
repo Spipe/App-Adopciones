@@ -5,14 +5,14 @@
 
       <v-toolbar-title>Título</v-toolbar-title>
 
-      <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
 
       <v-toolbar-items class="wide-screen-only">
         <v-btn v-for="item in items" :key="item.titulo" :to="item.ruta" flat>{{ item.titulo }}</v-btn>
       </v-toolbar-items>
       
       <div class="text-xs-center">
-        <v-btn round depressed color="#C84C09" dark>Entrar</v-btn>
+        <login-modal></login-modal>
       </div>
         
     </v-toolbar>
@@ -26,14 +26,14 @@
             <img src="https://randomuser.me/api/portraits/men/85.jpg">
           </v-list-tile-avatar>
 
-          <v-list-tile-content>
-            <v-list-tile-title>John Leider</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
+            <v-list-tile-content>
+              <v-list-tile-title>John Leider</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
 
-      <v-list class="pt-0" dense>
-        <v-divider></v-divider>
+        <v-list class="pt-0" dense>
+          <v-divider></v-divider>
 
         <v-list-tile
           v-for="item in items"
@@ -53,11 +53,17 @@
 </template>
 
 <script>
+  import LoginModal from '../components/login-modal'
+
   export default {
     name: 'navbar',
+    components: {
+      LoginModal
+    },
     data: () => {
       return {
         drawer: null,
+        dialog: false,
         items: [
           {
             titulo: 'Inicio',
