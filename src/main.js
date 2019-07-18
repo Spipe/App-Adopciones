@@ -29,7 +29,7 @@ const router = new VueRouter({
         component: Catalogo,
       },
       {
-        path: '/seleccion',
+        path: '/mascota',
         component: Seleccion
       }
     ],

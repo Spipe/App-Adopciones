@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="catalogo">
     <header>
       <navbar></navbar>
     </header>
@@ -66,7 +66,7 @@
 </script>
 
 <style>
-  .wrapper {
+  #catalogo .wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -74,17 +74,17 @@
 
 
   @media (min-width: 768px) {
-    .wrapper {
+    #catalogo .wrapper {
       display: grid;
       grid-template-columns: 300px 1fr;
     }
 
-    aside {
+    #catalogo aside {
       padding: 1rem 0 1rem 1rem !important;
     }
   }
 
-  .catalogo-grid {
+  #catalogo .catalogo-grid {
     flex: 1;
     margin: 1rem;
     display: grid;
@@ -92,13 +92,13 @@
     grid-gap: 1rem;
   }
 
-  aside {
+  #catalogo aside {
     width: 100%;
     background-color: transparent;
     padding: 1rem 1rem 0 1rem;
   }
 
-  .aside-card {
+  #catalogo .aside-card {
     height: 100%;
   }
 </style>
