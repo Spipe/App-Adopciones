@@ -8,6 +8,7 @@ import VueAxios from 'vue-axios'
 import App from './app.vue'
 import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
+import Seleccion from './pages/seleccion.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 
@@ -27,6 +28,10 @@ const router = new VueRouter({
         path: '/catalogo',
         component: Catalogo,
       },
+      {
+        path: '/seleccion',
+        component: Seleccion
+      }
     ],
     mode: 'history'
 })
