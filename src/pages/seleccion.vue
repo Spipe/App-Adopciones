@@ -18,6 +18,7 @@
     
         <div>
             <elemento-seleccion></elemento-seleccion>
+            <login-modal></login-modal>
         </div>
     </main>
 
@@ -25,10 +26,12 @@
 
 <script>
     import ElementoSeleccion from '../components/elemento-seleccion'
+    import LoginModal from '../components/login-modal'
     export default {
         name:'seleccion',
         components: {
-            ElementoSeleccion
+            ElementoSeleccion,
+            LoginModal
         }
     }
 </script>

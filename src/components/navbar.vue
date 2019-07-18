@@ -1,17 +1,18 @@
 <template>
   <v-layout>
     <v-toolbar>
+      <v-toolbar-side-icon class="small-screen-only" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+
       <v-toolbar-title>Título</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
-      <v-toolbar-items
-        v-for="item in items"
-        :key="item.titulo">
-        <v-btn :to="item.ruta" flat>{{ item.titulo }}</v-btn>
+      <v-toolbar-items class="wide-screen-only">
+        <v-btn v-for="item in items" :key="item.titulo" :to="item.ruta" flat>{{ item.titulo }}</v-btn>
       </v-toolbar-items>
+      
       <div class="text-xs-center">
-        <v-btn @click.stop="drawer = !drawer" round depressed color="#C84C09" dark >Entrar</v-btn>
+        <v-btn round depressed color="#C84C09" dark>Entrar</v-btn>
       </div>
         
     </v-toolbar>
@@ -37,8 +38,7 @@
         <v-list-tile
           v-for="item in items"
           :key="item.titulo"
-          :to="item.ruta"
-        >
+          :to="item.ruta">
           <v-list-tile-action>
             <v-icon>{{ item.icono }}</v-icon>
           </v-list-tile-action>
@@ -62,7 +62,7 @@
           {
             titulo: 'Inicio',
             icono: 'dashboard',
-            ruta: "/"
+            ruta: "/",
           },
           {
             titulo: 'Catálogo',
@@ -76,10 +76,27 @@
           }
         ]
       }
+    },
+    mounted () {
     }
   }
 </script>
 
 <style>
+
+  .wide-screen-only {
+    display: none !important;
+  }
+
+  @media (min-width: 768px) {
+
+    .small-screen-only {
+      display: none !important;
+    }
+
+    .wide-screen-only {
+      display: flex !important;
+    }
+  }
 
 </style>
