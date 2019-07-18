@@ -1,16 +1,18 @@
 <template>
-    <div class="wrapper">
-        <div class="video-container">
-    
-            <video autoplay muted loop width="1280" height="720" id="cover">
-                <source type="video/mp4" src="../assets/videos/michi.webm">
-                <source type="video/webm" src="../assets/videos/michi.webm">
-            </video>
-            
-            <div class="overlay">
-                <slot></slot>
+    <div id="video-cover">
+        <div class="wrapper">
+            <div class="video-container">
+        
+                <video autoplay muted loop width="1280" height="720" id="cover">
+                    <source type="video/mp4" src="../assets/videos/michi.webm">
+                    <source type="video/webm" src="../assets/videos/michi.webm">
+                </video>
+                
+                <div class="overlay">
+                    <slot></slot>
+                </div>
+                
             </div>
-            
         </div>
     </div>
 </template>
@@ -23,10 +25,10 @@
 </script>
 
 <style>
-    .wrapper {
+    #video-cover .wrapper {
         display: block;
     }
-    .video-container {
+    #video-cover .video-container {
         position: absolute;
         z-index: -1;
         top: 0;
@@ -36,7 +38,7 @@
         overflow: hidden;
     }
     
-    .video-container video {
+    #video-cover .video-container video {
         /* Make video to at least 100% wide and tall */
         min-width: 100%;
         min-height: 100%;
@@ -51,7 +53,7 @@
                 transform: translate(-50%, -50%);
     }
     
-    .overlay {
+    #video-cover .overlay {
         background: rgba(0, 0, 0, 0.5);
         position: absolute;
         bottom: 0;
@@ -66,24 +68,24 @@
         text-align: center;
     }
     
-    .overlay :last-child {
+    #video-cover .overlay :last-child {
         margin-bottom: 0;
     }
     
-    .overlay h1 {
+    #video-cover .overlay h1 {
         font-size: 14pt;
         font-weight: normal;
         text-shadow: 0 0 0.3em #000;
         margin: 0 0 1em;
     }
     
-    .overlay p {
+    #video-cover .overlay p {
         font-size: 11pt;
         text-shadow: 0 0 0.3em #000;
         margin: 1em 0;
     }
     
-    .overlay a {
+    #video-cover .overlay a {
         color: #fff;
     }
 </style>
