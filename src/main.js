@@ -10,6 +10,7 @@ import Catalogo from './pages/catalogo.vue'
 import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
 import IniciarSesion from './pages/iniciar.vue'
+import Ingresar from './pages/ingresar.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -49,6 +50,14 @@ const router = new VueRouter({
       {
         path: '/perfil',
         component: Perfil
+      },
+      {
+        path: '/iniciar',
+        component:IniciarSesion
+      },
+      {
+        path: '/ingresar',
+        component:Ingresar
       }
     ],
     mode:'history'
