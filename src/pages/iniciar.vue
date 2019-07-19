@@ -12,123 +12,30 @@
             lazy-validation>
 
             <v-text-field
-              v-model="rut"
-              :rules="rutRules"
+              v-model="correo"
+              :rules="correoRules"
               label="Correo"
               prepend-icon="email"
               required>
             </v-text-field>
 
             <v-text-field
-              v-model="rut"
-              :rules="rutRules"
+              v-model="contrasenia"
+              :rules="contraseniaRules"
               label="Contraseña"
               prepend-icon="lock"
               required>
             </v-text-field>
 
-            <v-text-field
-              v-model="rut"
-              :rules="rutRules"
-              label="Repetir contraseña"
-              prepend-icon="lock"
-              required>
-            </v-text-field>
-
-            <v-divider></v-divider>
-
-            <v-text-field
-              v-model="rut"
-              :rules="rutRules"
-              label="RUT"
-              prepend-icon="person"
-              required>
-            </v-text-field>
-
-            <v-text-field
-              v-model="nombres"
-              :rules="nombresRules"
-              label="Nombres"
-              prepend-icon="person"
-              required>
-            </v-text-field>
-
-            <v-text-field
-              v-model="apellidos"
-              :rules="apellidosRules"
-              label="Apellidos"
-              prepend-icon="person"
-              required>
-            </v-text-field>
-
-            <v-dialog
-              ref="dialog"
-              v-model="modal"
-              :return-value.sync="date"
-              persistent
-              required
-              lazy
-              full-width
-              width="290px"
-            >
-              <template v-slot:activator="{ on }">
-                <v-text-field
-                  v-model="date"
-                  label="Nacimiento"
-                  prepend-icon="event"
-                  readonly
-                  v-on="on"
-                ></v-text-field>
-              </template>
-              <v-date-picker v-model="date" scrollable locale="es-mx" color="primary">
-                <v-spacer></v-spacer>
-                <v-btn flat color="primary" @click="modal = false">Cancel</v-btn>
-                <v-btn flat color="primary" @click="$refs.dialog.save(date)">OK</v-btn>
-              </v-date-picker>
-            </v-dialog>
-
-            <v-divider></v-divider>
-
-            <v-select
-              v-model="selectRegion"
-              :items="regiones"
-              :loading="regiones == null"
-              :rules="[v => !!v || 'Item is required']"
-              prepend-icon="event"
-              label="Región"
-              item-text="nombre"
-              item-value="codigo"
-              @change="getProvincias"
-              required>
-            </v-select>
-
-            <v-select
-              v-model="selectProvincia"
-              :items="provincias"
-              :loading="provincias == null"
-              :rules="[v => !!v || 'Item is required']"
-              prepend-icon="event"
-              label="Provincia"
-              
-              required>
-            </v-select>
-
-            <v-select
-              v-model="selectComuna"
-              :items="comunas"
-              :loading="comunas == null"
-              :rules="[v => !!v || 'Item is required']"
-              prepend-icon="event"
-              label="Comuna"
-              required>
-            </v-select>
-
-            <v-checkbox
-              v-model="checkbox"
-              :rules="[v => !!v || 'You must agree to continue!']"
-              label="Do you agree?"
-              required>
-            </v-checkbox>
+            <v-btn
+              color="primary"
+              round
+              depressed
+              block
+              @click="login"
+              dark>
+              Entrar
+            </v-btn>
 
           </v-form>
         </v-flex>
