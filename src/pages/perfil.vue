@@ -1,31 +1,41 @@
 <template>
     <div id="perfil">
         <header>
-            <navbar/>
+            <navbar active="/perfil"></navbar>
         </header>
         <main>
             <div class="wrapper">
                 <v-layout class="perfil-layout">
                     <v-card class="perfil-card">
-                        <v-avatar
-                        :size="300">
+                        <v-avatar :size="100" padding="15px">
                             <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
                         </v-avatar>
-                        <v-card-title primary-title>
-                        <div>
-                            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-                            <div> {{ card_text }} </div>
-                        </div>
+                        <v-card-title primary-title class="primary-title">
+                            <div>
+                                <h3 class="headline mb-0">{{ nombre }}</h3>
+                                <h4>{{ correo }}</h4>
+                                <div>{{ comuna }}, {{ region }}</div>
+                                <br>
+                                <GmapMap
+                                        :center="{lat: latt, lng: lngg}"
+                                        :zoom="11"
+                                        map-type-id="terrain"
+                                        style="width: 300px; height: 300px"
+                                >
+                                    <GmapMarker
+                                            :key="index"
+                                            v-for="(m, index) in markers"
+                                            :position="m.position"
+                                            :clickable="true"
+                                            :draggable="true"
+                                            @click="center=m.position"
+                                    />
+                                </GmapMap>
+                            </div>
                         </v-card-title>
-
-                        <v-card-actions>
-                        <v-btn flat color="orange">Share</v-btn>
-                        <v-btn flat color="orange">Explore</v-btn>
-                        </v-card-actions>
                     </v-card>
                 </v-layout>
                 <aside>
-                    <div class="catalogo-grid"> 
                         <mascota-small-card
                         v-for="michi in michis"
                         :key="michi.nombre"
@@ -34,7 +44,6 @@
                         :adoptado="michi.adoptado"
                         :imagen="michi.imagen">
                         </mascota-small-card>
-                    </div>
                 </aside>
             </div>
         </main>
@@ -50,6 +59,8 @@
     import Pie from '../components/pie.vue'
     import axios from 'axios'
 
+
+
     export default{
         name: 'perfil',
         components: {
@@ -60,7 +71,13 @@
         data (){
             return {
                 michis: null,
-                card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'
+                card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.',
+                nombre: 'Organización Patitas',
+                correo: 'correo@gmail.com',
+                comuna: 'Curacaví',
+                latt: -33.4063,
+                lngg: -71.1333,
+                region: 'Región Metropolitana'
             }
         },
         mounted () {
@@ -91,35 +108,47 @@
     display: flex;
     flex-direction: column;
     padding: 1%;
+    text-align: center;
+    width: fit-content;
 }
 
 #perfil .perfil-card{
     min-height: calc(100vh - 90px);
-    padding: 5%;
+}
+
+#perfil .primary-title{
+    justify-content: center;
+}
+
+#perfil aside {
+    background-color: transparent;
+}
+
+#perfil h4 {
+    padding: 5px;
 }
 
   @media (min-width: 768px) {
     #perfil .wrapper {
-      display: grid;
-      grid-template-columns: 700px 1fr;
+        display: grid;
+        padding: 5px;
+        grid-template-columns: 300px 1fr;
+        grid-gap: 3rem;
     }
+      #perfil .perfil-layout {
+          padding-top: 15px;
+          display: flex;
+      }
 
-    #perfil aside {
-      padding: 0.5em 0 0,5rem 1rem !important;
-    }
+      #perfil v-avatar {
+          size: 15;
+      }
 
-    #perfil .catalogo-grid {
-    flex: 1;
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
-    }
-
-    #perfil aside {
-        width: 100%;
-        background-color: transparent;
-        padding: 0 1rem 1rem 1rem;
+      #perfil aside {
+          padding: 10px 10px 10px !important;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          grid-gap: 2rem;
     }
   }
 </style>
