@@ -14,7 +14,24 @@
                   :src="imagen"
                   class="foto-organizacion">
                 </v-img>
-                <h1>{{dueño}}</h1>
+                <h3>{{dueño}}</h3>
+                <h4>{{ correo }}</h4>
+                <div>{{ comuna }}, {{ region }}</div>
+                <GmapMap class="googlemap"
+                  :center="{lat: latt, lng: lngg}"
+                  :zoom="11"
+                  map-type-id="terrain"
+                  style="width: 300px; height: 300px; margin: 0 auto 0 auto;"
+                >
+                  <GmapMarker
+                    :key="index"
+                    v-for="(m, index) in markers"
+                    :position="m.position"
+                    :clickable="true"
+                    :draggable="true"
+                    @click="center=m.position"
+                  />
+                </GmapMap>
               </v-card>
             </aside>                    
           </div>
@@ -35,7 +52,12 @@
         data: ()=>{
           return{
             imagen:require('../assets/images/1.jpeg'),
-            dueño:'Felipito'
+            dueño:'Felipito',
+            correo: 'correo@gmail.com',
+            comuna: 'Curacaví',
+            latt: -33.4063,
+            lngg: -71.1333,
+            region: 'Región Metropolitana'
           }
         },
         components: {
@@ -60,12 +82,13 @@
     width: 12em;
     height: 12em;
     display:block;
-    margin:auto
+    margin:auto;
   }
 
   #mascota .mapa{
-    height: 100%;
     background: transparent;
+    text-align: center;
+
   }
 
   @media (min-width: 768px) {
@@ -94,7 +117,10 @@
         display: inline-block;
         border-radius: 12px;
         margin-top: 0.5em;
-        width: 100%;
-    }
+        
+  }
+  #mascota h4 {
+    padding: 5px;
+  }
 </style>
 

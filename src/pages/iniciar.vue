@@ -193,14 +193,6 @@
       },
       getProvincias() {
         axios.get(`http://apis.modernizacion.cl/dpa/regiones/04/provincias`)
-        .then(response => {
-          var lista = [];
-          console.info(response.data);
-          response.data.forEach(provincia => {
-            lista.push({text: provincia.nombre});
-          });
-          this.provincias = lista;
-        })
         
       }
     }

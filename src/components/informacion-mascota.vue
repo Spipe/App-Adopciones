@@ -10,7 +10,7 @@
             </v-carousel>
             <h1>{{ nombreA }}</h1>
             <p>{{description}}</p>
-            <p v-if="esterilizado">Esterilizado</p>
+            <h4 v-if="esterilizado">Esterilizado</h4>
             <button class="btn-1" v-if="estado">
                 Estoy Interesado :)
             </button>

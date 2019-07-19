@@ -24,47 +24,19 @@
                         <v-radio label="Michi" value="radio-2"></v-radio>
                     </v-radio-group>
 
-                    <v-text-field
-                    v-model="rut"
-                    :rules="nameRules"
-                    label="Raza"
-                    prepend-icon="pets"
-                    required>
-                    </v-text-field>
+                    <v-radio-group v-model="row" row>
+                        <v-radio label="Esterilizado" value="radio-1"></v-radio>
+                    </v-radio-group>
 
                     <v-text-field
                     v-model="rut"
                     :rules="nameRules"
-                    label="Pelaje"
+                    label="Habitat"
                     prepend-icon="pets"
                     required>
                     </v-text-field>
 
                     <v-divider></v-divider>
-
-                    <v-text-field
-                    v-model="rut"
-                    :rules="rutRules"
-                    label="RUT"
-                    prepend-icon="person"
-                    required>
-                    </v-text-field>
-
-                    <v-text-field
-                    v-model="nombres"
-                    :rules="nombresRules"
-                    label="Nombres"
-                    prepend-icon="person"
-                    required>
-                    </v-text-field>
-
-                    <v-text-field
-                    v-model="apellidos"
-                    :rules="apellidosRules"
-                    label="Apellidos"
-                    prepend-icon="person"
-                    required>
-                    </v-text-field>
 
                     <v-dialog
                     ref="dialog"
@@ -95,38 +67,38 @@
                     <v-divider></v-divider>
 
                     <v-select
-                    v-model="selectRegion"
-                    :items="regiones"
-                    :loading="regiones == null"
+                    v-model="selectPelaje"
+                    :items="pelaje"
+                    :loading="pelaje == null"
                     :rules="[v => !!v || 'Item is required']"
                     prepend-icon="event"
-                    label="Región"
+                    label="Tipo de pelaje"
                     item-text="nombre"
                     item-value="codigo"
-                    @change="getProvincias"
                     required>
                     </v-select>
 
                     <v-select
-                    v-model="selectProvincia"
-                    :items="provincias"
-                    :loading="provincias == null"
+                    v-model="selectPatron"
+                    :items="patron"
+                    :loading="patron == null"
                     :rules="[v => !!v || 'Item is required']"
                     prepend-icon="event"
-                    label="Provincia"
+                    label="Patron del pelaje"                 
+                    required>
+                    </v-select>
+
+                    <v-select
+                    v-model="selectSexo"
+                    :items="sexo"
+                    :loading="sexo == null"
+                    :rules="[v => !!v || 'Item is required']"
+                    prepend-icon="event"
+                    label="Sexo"
+                    required>
+                    </v-select>
+
                     
-                    required>
-                    </v-select>
-
-                    <v-select
-                    v-model="selectComuna"
-                    :items="comunas"
-                    :loading="comunas == null"
-                    :rules="[v => !!v || 'Item is required']"
-                    prepend-icon="event"
-                    label="Comuna"
-                    required>
-                    </v-select>
 
                 </v-form>
                 </v-flex>
@@ -151,15 +123,16 @@
       Pie
     },
     data: () => ({
-      regiones: [],
-      provincias: [],
-      comunas: [],
+      colores: [],
+      pelaje: [],
+      patron: [],
+      sexo:["Masculino","Femenino"],
       valid: true,
       date: new Date().toISOString().substr(0, 10),
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 3) || 'Name must be less than 3 characters'
+        v => (v && v.length >= 3) || 'Name must be less than 3 characters'
       ],
       select: null,
       checkbox: false
@@ -185,14 +158,6 @@
       },
       getProvincias() {
         axios.get(`http://apis.modernizacion.cl/dpa/regiones/04/provincias`)
-        .then(response => {
-          var lista = [];
-          console.info(response.data);
-          response.data.forEach(provincia => {
-            lista.push({text: provincia.nombre});
-          });
-          this.provincias = lista;
-        })
         
       }
     }
