@@ -1,17 +1,21 @@
 <template>
     <div id="informacion-mascota">    
-        <div class='product-info'>
+        <div class="product-info">
+            <v-carousel hide-delimiters>
+                <v-carousel-item
+                v-for="(item,i) in items"
+                :key="i"
+                :src="item.src"
+                ></v-carousel-item>
+            </v-carousel>
             <h1>{{ nombreA }}</h1>
-            <div class='image-select'>
-                <img v-bind:src= "image"/>
-            </div>
-            <p>{{ description }}</p>
+            <p>{{description}}</p>
             <p v-if="esterilizado">Esterilizado</p>
-            <p v-else>No Esterilizado</p>
-            <button class ="btn-1" v-if="estado">
-                Estoy interesado!
+            <button class="btn-1" v-if="estado">
+                Estoy Interesado :)
             </button>
         </div>
+
     </div>
 </template>
 
@@ -22,11 +26,24 @@
             return {
                 nombreA : "TurboChela",
                 product: 'Michi ',
-                description: 'Descripcion del michi puesto por quien lo esta dando en adopcion',
-                image: require('../assets/images/1.jpeg'),
                 altext: 'Foto de la mascota',
+                description: 'Descripcion del michi puesto por quien lo esta dando en adopcion ',
                 esterilizado: true,
                 estado: true,
+                items:[
+                    {
+                         src: require('../assets/images/1.jpeg')
+                    },
+                    {
+                        src: require('../assets/images/2.jpeg')
+                    },
+                    {
+                        src: require('../assets/images/3.jpeg')
+                    },
+                    {
+                        src: require('../assets/images/4.jpeg')
+                    }
+                ]
             }
         }
 
@@ -51,22 +68,7 @@
     }
 
     #elemento-seleccion .product-info {
-        text-align:center;
-        width: 100%;
-        background: #eee;
+        height: 100%;
     }
 
-    #elemento-seleccion .btn-1 {
-        border: black;
-        background-color: rgb(40, 167, 72);
-        padding: 14px 28px;
-        font-size: 16px;
-        cursor: pointer;
-        display: inline-block;
-        border-radius: 12px;
-    }
-    #elemento-seleccion .btn:hover {
-        background: #ffffff;
-        
-    }
 </style>

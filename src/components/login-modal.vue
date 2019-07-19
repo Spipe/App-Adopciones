@@ -1,19 +1,10 @@
 <template>
   <div class="text-xs-center">
     <v-dialog
-      v-model="dialog"
-      width="440"
-      height="440"
-    >
-      <template v-slot:activator="{ on }">
-        <v-btn
-          color="red lighten-2"
-          dark
-          v-on="on"
-        >
-          Click Me
-        </v-btn>
-      </template>
+        
+        hide-overlay
+        v-model="loginDialog"
+        width="440">
 
         <v-card>
             <div class="login-modal">
@@ -94,8 +85,8 @@
         background-color: #5667af;
         transition: background-color 0.4s;
         &:hover {
-        background-color: lighten(#5667af, 4%);
-        transition: background-color 0.4s;
+            background-color: lighten(#5667af, 4%);
+            transition: background-color 0.4s;
         }
     }
     
@@ -167,9 +158,10 @@
     font-size: 14px;
     line-height: 46px;
     padding: 0 36px;
-    a {
-        color: #666;
-        font-weight: 600;
-    }
+
+        a {
+            color: #666;
+            font-weight: 600;
+        }
     }
 </style>

@@ -9,6 +9,7 @@ import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
 import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
+import IniciarSesion from './pages/iniciar.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -43,7 +44,13 @@ Vue.use(VueGoogleMaps, {
 Vue.use(VueAxios, axios)
 Vue.use(VueRouter)
 Vue.use(Vuetify, {
-  iconfont: 'fa'
+  iconfont: 'fa',
+  theme: {
+    primary: '#f57c00',
+    secondary: '#b0bec5',
+    accent: '#e65100',
+    error: '#b71c1c'
+  }
 })
 
 Vue.config.productionTip = false
@@ -63,11 +70,15 @@ const router = new VueRouter({
         component: Mascota
       },
       {
+        path: '/entrar',
+        component: IniciarSesion
+      },
+      {
         path: '/perfil',
         component: Perfil
       }
     ],
-    mode: 'history'
+    mode:'history'
 })
 
 new Vue({

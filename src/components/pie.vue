@@ -1,22 +1,20 @@
 <template>
   <v-footer
     dark
-    height="auto"
-
-  >
+    height="auto">
     <v-card
       flat
       tile
-      class="white--text text-xs-center"
+      class="accent white--text text-xs-center"
     >
       <v-card-text>
         <v-btn
-          v-for="icon in icons"
-          :key="icon"
+          v-for="social in sociales"
+          :key="social.icono"
           class="mx-3 white--text"
-          icon
-        >
-          <v-icon size="24px">{{ icon }}</v-icon>
+          :href="social.href"
+          icon>
+          <v-icon size="24px">{{ social.icono }}</v-icon>
         </v-btn>
       </v-card-text>
 
@@ -27,7 +25,7 @@
       <v-divider></v-divider>
 
       <v-card-text class="white--text">
-        &copy;2018 — <strong>Vuetify</strong>
+        &copy;2019 — <strong>EPA</strong>
       </v-card-text>
     </v-card>
   </v-footer>
@@ -37,12 +35,15 @@
   export default {
     name: 'pie',
     data: () => ({
-      icons: [
-        'fab fa-facebook',
-        'fab fa-twitter',
-        'fab fa-google-plus',
-        'fab fa-linkedin',
-        'fab fa-instagram'
+      sociales: [
+        {
+          icono: 'fab fa-facebook-f',
+          href: "https://www.facebook.com/epauchile"
+        },
+        {
+          icono: 'fab fa-instagram',
+          href: "https://www.instagram.com/epa_antumapu/"
+        }
       ]
     })
   }
