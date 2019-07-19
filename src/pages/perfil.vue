@@ -5,22 +5,36 @@
         </header>
         <main>
             <div class="wrapper">
-                <div class="">
-
-                </div>
-                <aside>
-                    <v-expansion-panel expand=true>
-                        <div class="catalogo-grid"> 
-                            <mascota-small-card
-                            v-for="michi in michis"
-                            :key="michi.nombre"
-                            :nombre="michi.nombre"
-                            :esterilizado="michi.esterilizado"
-                            :adoptado="michi.adoptado"
-                            :imagen="michi.imagen">
-                            </mascota-small-card>
+                <v-layout class="perfil-layout">
+                    <v-card class="perfil-card">
+                        <v-avatar
+                        :size="300">
+                            <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
+                        </v-avatar>
+                        <v-card-title primary-title>
+                        <div>
+                            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
+                            <div> {{ card_text }} </div>
                         </div>
-                    </v-expansion-panel>
+                        </v-card-title>
+
+                        <v-card-actions>
+                        <v-btn flat color="orange">Share</v-btn>
+                        <v-btn flat color="orange">Explore</v-btn>
+                        </v-card-actions>
+                    </v-card>
+                </v-layout>
+                <aside>
+                    <div class="catalogo-grid"> 
+                        <mascota-small-card
+                        v-for="michi in michis"
+                        :key="michi.nombre"
+                        :nombre="michi.nombre"
+                        :esterilizado="michi.esterilizado"
+                        :adoptado="michi.adoptado"
+                        :imagen="michi.imagen">
+                        </mascota-small-card>
+                    </div>
                 </aside>
             </div>
         </main>
@@ -46,6 +60,7 @@
         data (){
             return {
                 michis: null,
+                card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'
             }
         },
         mounted () {
@@ -70,9 +85,18 @@
 #perfil .wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-  }
+}
 
+#perfil .perfil-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+}
+
+#perfil .perfil-card{
+    min-height: calc(100vh - 90px);
+    padding: 5%;
+}
 
   @media (min-width: 768px) {
     #perfil .wrapper {
