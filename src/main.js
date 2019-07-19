@@ -10,6 +10,7 @@ import Catalogo from './pages/catalogo.vue'
 import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
 import IniciarSesion from './pages/iniciar.vue'
+import Seguimiento from './pages/seguimiento.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -76,6 +77,10 @@ const router = new VueRouter({
       {
         path: '/perfil',
         component: Perfil
+      },
+      {
+        path: '/seguimiento',
+        component: Seguimiento
       }
     ],
     mode:'history'

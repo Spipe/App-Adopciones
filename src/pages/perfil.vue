@@ -7,7 +7,7 @@
             <div class="wrapper">
                 <v-layout class="perfil-layout">
                     <v-card class="perfil-card">
-                        <v-avatar :size="100" padding="15px">
+                        <v-avatar :size="100">
                             <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
                         </v-avatar>
                         <v-card-title primary-title class="primary-title">
@@ -102,14 +102,14 @@
 #perfil .wrapper {
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 #perfil .perfil-layout {
     display: flex;
     flex-direction: column;
-    padding: 1%;
+    padding: 2%;
     text-align: center;
-    width: fit-content;
 }
 
 #perfil .perfil-card{
@@ -131,24 +131,20 @@
   @media (min-width: 768px) {
     #perfil .wrapper {
         display: grid;
-        padding: 5px;
-        grid-template-columns: 300px 1fr;
-        grid-gap: 3rem;
+        padding: 10px;
+        grid-template-columns: 350px 1fr;
+        grid-gap: 1rem;
     }
       #perfil .perfil-layout {
           padding-top: 15px;
           display: flex;
       }
 
-      #perfil v-avatar {
-          size: 15;
-      }
-
       #perfil aside {
-          padding: 10px 10px 10px !important;
+          padding: 10px!important;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          grid-gap: 2rem;
+          grid-gap: 1rem;
     }
   }
 </style>

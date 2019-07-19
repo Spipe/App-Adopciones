@@ -93,6 +93,11 @@
             titulo: 'Perfil',
             icono: 'portraits',
             ruta: "/perfil"
+          },
+          {
+            titulo: 'Seguimiento',
+            icono: 'weekend',
+            ruta: "/seguimiento"
           }
         ]
       }
