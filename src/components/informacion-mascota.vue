@@ -14,7 +14,7 @@
             <h4 v-if="esterilizado">Esterilizado {{sexo}}</h4>
             <h4>{{color}} {{patron}}</h4>
 
-            <v-btn class="btn-1" v-if="estado" href="/" >
+            <v-btn class="btn-1" v-if="estado" href="/formulario" >
                 Estoy Interesado :)
             </v-btn>
         </div>
