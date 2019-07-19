@@ -1,7 +1,7 @@
 <template>
   <div id="catalogo">
     <header>
-      <navbar></navbar>
+      <navbar active="/catalogo"></navbar>
     </header>
     <main>
       <div class="wrapper">
@@ -40,7 +40,7 @@
         <div class="catalogo-grid"> 
           <elemento-catalogo
             v-for="michi in michis"
-            :key="michi.nombre"
+            :key="michi.id"
             :nombre="michi.nombre"
             :esterilizado="michi.esterilizado"
             :adoptado="michi.adoptado"
@@ -110,8 +110,9 @@
       axios.get('https://pokeapi.co/api/v2/pokemon/')
         .then(response => {
           let lista = [];
-          response.data.results.forEach(pokemon => {
+          response.data.results.forEach((pokemon, i) => {
             lista.push({
+              id: i,
               nombre: pokemon.name.toUpperCase()[0] + pokemon.name.slice(1),
               imagen: require(`../assets/images/${Math.floor(Math.random() * 4) + 1}.jpeg`),
               esterilizado: Math.floor(Math.random() * 2) == 0,

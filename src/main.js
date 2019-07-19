@@ -3,18 +3,20 @@ import Vuetify from 'vuetify'
 import VueRouter from 'vue-router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
- 
 
 import App from './app.vue'
 import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
-import Seleccion from './pages/seleccion.vue'
+import Mascota from './pages/mascota.vue'
 
 import 'vuetify/dist/vuetify.min.css'
+import '@fortawesome/fontawesome-free/css/all.css'
 
 Vue.use(VueAxios, axios)
 Vue.use(VueRouter)
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  iconfont: 'fa'
+})
 
 Vue.config.productionTip = false
 
@@ -30,10 +32,10 @@ const router = new VueRouter({
       },
       {
         path: '/mascota',
-        component: Seleccion
-      }
+        component: Mascota,
+      },
     ],
-    mode: 'history'
+    mode:'history'
 })
 
 new Vue({

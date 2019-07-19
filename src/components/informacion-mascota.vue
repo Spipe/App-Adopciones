@@ -1,7 +1,6 @@
 <template>
-    <div id="elemento-seleccion">    
-        <div class="product">
-            <h1>{{ nombreA }}</h1>
+    <div id="informacion-mascota">    
+        <div class="product-info">
             <v-carousel hide-delimiters>
                 <v-carousel-item
                 v-for="(item,i) in items"
@@ -9,20 +8,26 @@
                 :src="item.src"
                 ></v-carousel-item>
             </v-carousel>
+            <h1>{{ nombreA }}</h1>
+            <p>{{description}}</p>
+            <p v-if="esterilizado">Esterilizado</p>
+            <button class="btn-1" v-if="estado">
+                Estoy Interesado :)
+            </button>
         </div>
+
     </div>
 </template>
 
 <script>
     export default {
-        name: 'elemento-seleccion',
+        name: 'informacion-mascota',
         data: () => {
             return {
                 nombreA : "TurboChela",
                 product: 'Michi ',
-                description: 'Descripcion del michi puesto por quien lo esta dando en adopcion',
-                image: require('../assets/images/1.jpeg'),
                 altext: 'Foto de la mascota',
+                description: 'Descripcion del michi puesto por quien lo esta dando en adopcion ',
                 esterilizado: true,
                 estado: true,
                 items:[
@@ -46,8 +51,9 @@
 </script>
 
 <style>
-    #elemento-seleccion .product {
-    margin:0.5em;
+    #elemento-seleccion {
+        height:100%;
+        width:100%;
     }
 
     #elemento-seleccion .image-select{
@@ -62,22 +68,7 @@
     }
 
     #elemento-seleccion .product-info {
-        text-align:center;
-        width: 100%;
-        background: #eee;
+        height: 100%;
     }
 
-    #elemento-seleccion .btn-1 {
-        border: black;
-        background-color: rgb(40, 167, 72);
-        padding: 14px 28px;
-        font-size: 16px;
-        cursor: pointer;
-        display: inline-block;
-        border-radius: 12px;
-    }
-    #elemento-seleccion .btn:hover {
-        background: #ffffff;
-        
-    }
 </style>
