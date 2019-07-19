@@ -85,6 +85,11 @@
             titulo: 'Perfil',
             icono: 'portraits',
             ruta: "/perfil"
+          },
+          {
+            titulo: 'Formulario',
+            icono: 'avatar',
+            ruta: "/formulario"
           }
         ]
       }

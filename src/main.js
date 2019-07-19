@@ -9,6 +9,7 @@ import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
 import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
+import Formulario from './pages/formulario.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -38,6 +39,10 @@ const router = new VueRouter({
       {
         path: '/perfil',
         component: Perfil
+      },
+      {
+        path: '/formulario',
+        component: Formulario
       }
     ],
     mode: 'history'

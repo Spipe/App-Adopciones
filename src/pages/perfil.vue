@@ -17,11 +17,6 @@
                             <div> {{ card_text }} </div>
                         </div>
                         </v-card-title>
-
-                        <v-card-actions>
-                        <v-btn flat color="orange">Share</v-btn>
-                        <v-btn flat color="orange">Explore</v-btn>
-                        </v-card-actions>
                     </v-card>
                 </v-layout>
                 <aside>
@@ -60,7 +55,7 @@
         data (){
             return {
                 michis: null,
-                card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.'
+                card_text: 'Lorem ipsum dolor sit amet.'
             }
         },
         mounted () {
@@ -91,35 +86,27 @@
     display: flex;
     flex-direction: column;
     padding: 1%;
+    width: fit-content;
 }
 
 #perfil .perfil-card{
     min-height: calc(100vh - 90px);
-    padding: 5%;
+}
+
+#perfil aside {
+    background-color: transparent;
 }
 
   @media (min-width: 768px) {
     #perfil .wrapper {
       display: grid;
-      grid-template-columns: 700px 1fr;
+      grid-template-columns: 500px 1fr;
     }
 
     #perfil aside {
-      padding: 0.5em 0 0,5rem 1rem !important;
-    }
-
-    #perfil .catalogo-grid {
-    flex: 1;
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
-    }
-
-    #perfil aside {
-        width: 100%;
-        background-color: transparent;
-        padding: 0 1rem 1rem 1rem;
+      padding: 0.5em 0 0,5rem 0.5rem !important;
+      display: grid;
+      grid-template: 150px;
     }
   }
 </style>
