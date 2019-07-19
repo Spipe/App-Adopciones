@@ -87,12 +87,12 @@
           {
             titulo: 'Mascota',
             icono: 'pet',
-            ruta: "/mascota"
+            ruta: "/mascota/1"
           },
           {
             titulo: 'Perfil',
             icono: 'portraits',
-            ruta: "/perfil"
+            ruta: "/perfil/1"
           }
         ]
       }

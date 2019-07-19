@@ -10,6 +10,7 @@ import Catalogo from './pages/catalogo.vue'
 import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
 import IniciarSesion from './pages/iniciar.vue'
+import Registrar from './pages/registrar.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -39,7 +40,7 @@ const router = new VueRouter({
         component: Catalogo,
       },
       {
-        path: '/mascota',
+        path: '/mascota/:id',
         component: Mascota
       },
       {
@@ -47,7 +48,11 @@ const router = new VueRouter({
         component: IniciarSesion
       },
       {
-        path: '/perfil',
+        path: '/registrar',
+        component: Registrar
+      },
+      {
+        path: '/perfil/:id',
         component: Perfil
       }
     ],
