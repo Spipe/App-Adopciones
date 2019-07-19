@@ -1,5 +1,5 @@
 <template>
-    <div class='product' id="elemento-seleccion">    
+    <div id="informacion-mascota">    
         <div class='product-info'>
             <h1>{{ nombreA }}</h1>
             <div class='image-select'>
@@ -17,7 +17,7 @@
 
 <script>
     export default {
-        name: 'elemento-seleccion',
+        name: 'informacion-mascota',
         data: () => {
             return {
                 nombreA : "TurboChela",
@@ -34,9 +34,9 @@
 </script>
 
 <style>
-    #elemento-seleccion .product {
-    height:100%;
-    width:100%;
+    #elemento-seleccion {
+        height:100%;
+        width:100%;
     }
 
     #elemento-seleccion .image-select{

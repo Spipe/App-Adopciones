@@ -11,14 +11,14 @@
                 <aside>
                     <v-expansion-panel expand=true>
                         <div class="catalogo-grid"> 
-                            <elemento-catalogo
+                            <mascota-small-card
                             v-for="michi in michis"
                             :key="michi.nombre"
                             :nombre="michi.nombre"
                             :esterilizado="michi.esterilizado"
                             :adoptado="michi.adoptado"
                             :imagen="michi.imagen">
-                            </elemento-catalogo>
+                            </mascota-small-card>
                         </div>
                     </v-expansion-panel>
                 </aside>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-    import ElementoCatalogo from "../components/elemento-catalogo"
+    import MascotaSmallCard from "../components/mascota-small-card"
     import Navbar from '../components/navbar.vue'
     import Pie from '../components/pie.vue'
     import axios from 'axios'
@@ -39,7 +39,7 @@
     export default{
         name: 'perfil',
         components: {
-            ElementoCatalogo,
+            MascotaSmallCard,
             Navbar,
             Pie
         },

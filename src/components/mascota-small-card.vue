@@ -1,6 +1,6 @@
 <template>
   <div  id="elemento-catalogo">
-    <v-card class="with-radius" ripple="true">
+    <v-card class="with-radius" ripple=true>
       <v-img
           :src="imagen"
           class="foto-michi">
