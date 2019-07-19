@@ -98,6 +98,11 @@
             titulo: 'Formulario',
             icono: 'avatar',
             ruta: "/formulario"
+          },
+          {
+            titulo: 'Seguimiento',
+            icono: 'weekend',
+            ruta: "/seguimiento"
           }
         ]
       }

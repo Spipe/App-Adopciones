@@ -11,6 +11,7 @@ import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
 import Formulario from './pages/formulario.vue'
 import IniciarSesion from './pages/iniciar.vue'
+import Seguimiento from './pages/seguimiento.vue'
 import Registrar from './pages/registrar.vue'
 
 import 'vuetify/dist/vuetify.min.css'
@@ -86,6 +87,10 @@ const router = new VueRouter({
       {
         path: '/formulario',
         component: Formulario
+      },
+      {
+        path: '/seguimiento',
+        component: Seguimiento
       }
     ],
     mode:'history'

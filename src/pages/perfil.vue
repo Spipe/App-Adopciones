@@ -7,24 +7,24 @@
             <div class="wrapper">
                 <v-layout class="perfil-layout" style="width: 100%">
                     <perfil-card
-                        :nombre="organizacion.nombre"
-                        :correo="organizacion.correo"
-                        :comuna="organizacion.comuna"
-                        :latitud="organizacion.latitud"
-                        :longitud="organizacion.longitud"
-                        :telefono="organizacion.telefono"
-                        :region="organizacion.region">
+                            :nombre="organizacion.nombre"
+                            :correo="organizacion.correo"
+                            :comuna="organizacion.comuna"
+                            :latitud="organizacion.latitud"
+                            :longitud="organizacion.longitud"
+                            :telefono="organizacion.telefono"
+                            :region="organizacion.region">
                     </perfil-card>
                 </v-layout>
                 <aside>
-                        <mascota-small-card
+                    <mascota-small-card
                             v-for="michi in michis"
                             :key="michi.nombre"
                             :nombre="michi.nombre"
                             :esterilizado="michi.esterilizado"
                             :adoptado="michi.adoptado"
                             :imagen="michi.imagen">
-                        </mascota-small-card>
+                    </mascota-small-card>
                 </aside>
             </div>
         </main>
@@ -68,16 +68,16 @@
         mounted () {
             axios.get('https://pokeapi.co/api/v2/pokemon/')
                 .then(response => {
-                let lista = [];
-                response.data.results.forEach(pokemon => {
-                    lista.push({
-                    nombre: pokemon.name.toUpperCase()[0] + pokemon.name.slice(1),
-                    imagen: require(`../assets/images/${Math.floor(Math.random() * 4) + 1}.jpeg`),
-                    esterilizado: Math.floor(Math.random() * 2) == 0,
-                    });
-                })
-                
-                this.michis = lista.splice(0, 12);
+                    let lista = [];
+                    response.data.results.forEach(pokemon => {
+                        lista.push({
+                            nombre: pokemon.name.toUpperCase()[0] + pokemon.name.slice(1),
+                            imagen: require(`../assets/images/${Math.floor(Math.random() * 4) + 1}.jpeg`),
+                            esterilizado: Math.floor(Math.random() * 2) == 0,
+                        });
+                    })
+
+                    this.michis = lista.splice(0, 12);
                 })
         }
     }
