@@ -7,6 +7,7 @@ import VueAxios from 'vue-axios'
 import App from './app.vue'
 import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
+import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
 import IniciarSesion from './pages/iniciar.vue'
 
@@ -44,9 +45,13 @@ const router = new VueRouter({
       {
         path: '/entrar',
         component: IniciarSesion
+      },
+      {
+        path: '/perfil',
+        component: Perfil
       }
     ],
-    mode: 'history'
+    mode:'history'
 })
 
 new Vue({
