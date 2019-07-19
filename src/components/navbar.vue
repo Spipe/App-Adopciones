@@ -18,6 +18,7 @@
     </v-toolbar>
     <v-navigation-drawer
       v-model="drawer"
+      class="white"
       absolute
       temporary >
       <v-list class="pa-1">

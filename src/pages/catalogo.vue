@@ -38,14 +38,14 @@
         </aside>
         
         <div class="catalogo-grid"> 
-          <elemento-catalogo
+          <mascota-small-card
             v-for="michi in michis"
             :key="michi.id"
             :nombre="michi.nombre"
             :esterilizado="michi.esterilizado"
             :adoptado="michi.adoptado"
             :imagen="michi.imagen">
-          </elemento-catalogo>
+          </mascota-small-card>
         </div>
       </div>
     </main>
@@ -56,7 +56,7 @@
 </template>
 
 <script>
-  import ElementoCatalogo from '../components/elemento-catalogo.vue'
+  import MascotaSmallCard from '../components/mascota-small-card.vue'
   import Navbar from '../components/navbar.vue'
   import Pie from '../components/pie.vue'
   import axios from 'axios'
@@ -64,7 +64,7 @@
   export default {
     name: 'catalogo',
     components: {
-      ElementoCatalogo,
+      MascotaSmallCard,
       Navbar,
       Pie
     },
@@ -72,37 +72,55 @@
       return {
         michis: null,
         filtros: [
-            {titulo: "Patron",
+          {
+            titulo: "Patron",
             tipo: "Checkbox",
             opciones: [
-              {titulo: "Atigrado",
-              valor: "checkbox-1"},
-              {titulo: "Manchado",
-              valor: "checkbox-2"},
-              {titulo: "Cochino",
-              valor: "checkbox-3"}
-            ]},
-            {titulo: "Color",
-            tipo: "Checkbox",
-            opciones: [
-              {titulo: "Calico",
-              valor: "checkbox-1"},
-              {titulo: "Arcoiris",
-              valor: "checkbox-2"},
-              {titulo: "Ragdoll",
-              valor: "checkbox-3"}
-            ]},
-            {titulo: "Esterilizado",
-            tipo: "Radio",
-            opciones: [
-              {titulo: "No, ta cochino",
-              valor: "radio-1"},
-              {titulo: "Se lavó ayer",
-              valor: "radio-2"}
-            ]},
-            {titulo: "Edad"},
-            {titulo: "Sexo"},
-            {titulo: "Tamaño"}
+              {
+                titulo: "Atigrado",
+                valor: "checkbox-1"
+              },
+              {
+                titulo: "Manchado",
+                valor: "checkbox-2"
+              },
+              {
+                titulo: "Cochino",
+                valor: "checkbox-3"
+              }
+            ]
+          },
+            {
+              titulo: "Color",
+              tipo: "Checkbox",
+              opciones: [
+                {titulo: "Calico",
+                valor: "checkbox-1"},
+                {titulo: "Arcoiris",
+                valor: "checkbox-2"},
+                {titulo: "Ragdoll",
+                valor: "checkbox-3"}
+              ]
+            },
+            {
+              titulo: "Esterilizado",
+              tipo: "Radio",
+              opciones: [
+                {titulo: "No, ta cochino",
+                valor: "radio-1"},
+                {titulo: "Se lavó ayer",
+                valor: "radio-2"}
+              ]
+            },
+            {
+              titulo: "Edad"
+            },
+            {
+              titulo: "Sexo"
+            },
+            {
+              titulo: "Tamaño"
+            }
         ]
       }
     },
