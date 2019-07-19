@@ -10,6 +10,7 @@ import Catalogo from './pages/catalogo.vue'
 import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
 import IniciarSesion from './pages/iniciar.vue'
+import Seguimiento from './pages/seguimiento.vue'
 import Registrar from './pages/registrar.vue'
 import IngresarMascota from './pages/ingresar.vue'
 
@@ -84,12 +85,8 @@ const router = new VueRouter({
         component: Perfil
       },
       {
-        path: '/iniciar',
-        component:IniciarSesion
-      },
-      {
-        path: '/ingresar',
-        component:IngresarMascota
+        path: '/seguimiento',
+        component: Seguimiento
       }
     ],
     mode:'history'
