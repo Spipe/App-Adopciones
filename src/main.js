@@ -7,6 +7,7 @@ import VueAxios from 'vue-axios'
 import App from './app.vue'
 import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
+import Perfil from './pages/perfil.vue'
 import Mascota from './pages/mascota.vue'
 
 import 'vuetify/dist/vuetify.min.css'
@@ -32,8 +33,12 @@ const router = new VueRouter({
       },
       {
         path: '/mascota',
-        component: Mascota,
+        component: Mascota
       },
+      {
+        path: '/perfil',
+        component: Perfil
+      }
     ],
     mode:'history'
 })

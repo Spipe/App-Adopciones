@@ -26,8 +26,17 @@
 
 <style>
     #video-cover .wrapper {
-        display: block;
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100vh - 48px);
     }
+
+    @media (min-width: 960px) {
+        #video-cover .wrapper {
+            min-height: calc(100vh - 64px);
+        }
+    }
+
     #video-cover .video-container {
         position: absolute;
         z-index: -1;

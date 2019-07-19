@@ -18,6 +18,7 @@
     </v-toolbar>
     <v-navigation-drawer
       v-model="drawer"
+      class="white"
       absolute
       temporary >
       <v-list class="pa-1">
@@ -79,6 +80,11 @@
             titulo: 'Mascota',
             icono: 'pet',
             ruta: "/mascota"
+          },
+          {
+            titulo: 'Perfil',
+            icono: 'portraits',
+            ruta: "/perfil"
           }
         ]
       }
