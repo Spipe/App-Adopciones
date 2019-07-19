@@ -3,16 +3,28 @@
     <v-toolbar>
       <v-toolbar-side-icon class="small-screen-only" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
 
-      <v-toolbar-title>Título</v-toolbar-title>
+      
+      <img :src="logo" style="height: 40px"/>
+      <v-toolbar-title>
+        EPA
+      </v-toolbar-title>
 
-        <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
 
       <v-toolbar-items class="wide-screen-only">
         <v-btn v-for="item in items" :key="item.titulo" :to="item.ruta" flat>{{ item.titulo }}</v-btn>
       </v-toolbar-items>
       
       <div class="text-xs-center">
-        <login-modal></login-modal>
+        <v-btn
+          color="primary"
+          round
+          depressed
+          to="/entrar"
+          dark
+          @click.stop="dialog = true">
+          Entrar
+        </v-btn>
       </div>
         
     </v-toolbar>
@@ -54,17 +66,13 @@
 </template>
 
 <script>
-  import LoginModal from '../components/login-modal'
 
   export default {
     name: 'navbar',
-    components: {
-      LoginModal
-    },
     data: () => {
       return {
         drawer: null,
-        dialog: false,
+        logo: require("../assets/images/logo.png"),
         items: [
           {
             titulo: 'Inicio',
@@ -79,12 +87,12 @@
           {
             titulo: 'Mascota',
             icono: 'pet',
-            ruta: "/mascota"
+            ruta: "/mascota/1"
           },
           {
             titulo: 'Perfil',
             icono: 'portraits',
-            ruta: "/perfil"
+            ruta: "/perfil/1"
           },
           {
             titulo: 'Formulario',

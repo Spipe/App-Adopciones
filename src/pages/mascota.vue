@@ -4,18 +4,20 @@
             <navbar active="/mascota"></navbar>
         </header>
         <main>
-            <div class="wrapper">
-                <div class="contenido"> 
-                    <informacion-mascota></informacion-mascota>
-                </div>
-
-                <aside>
-                    <v-card class="aside-card with-radius">
-                    </v-card>
-                </aside>
-                
-                
+          <div class="wrapper">
+            <div> 
+              <informacion-mascota></informacion-mascota>
             </div>
+            <aside >
+              <v-card class="aside-card with-radius mapa">
+                <v-img
+                  :src="imagen"
+                  class="foto-organizacion">
+                </v-img>
+                <h1>{{dueño}}</h1>
+              </v-card>
+            </aside>                    
+          </div>
         </main>
         <footer>
             <pie></pie>
@@ -28,9 +30,14 @@
     import Navbar from '../components/navbar.vue'
     import InformacionMascota from '../components/informacion-mascota.vue'
     import Pie from '../components/pie.vue'
-
     export default {
         name: 'mascota',
+        data: ()=>{
+          return{
+            imagen:require('../assets/images/1.jpeg'),
+            dueño:'Felipito'
+          }
+        },
         components: {
             Navbar,
             Pie,
@@ -40,12 +47,26 @@
 </script>
 
 <style>
-#mascota .wrapper {
+  #mascota .wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding: 0.5em;
+    text-align: center;
   }
 
+  #mascota .foto-organizacion{
+    border-radius: 100%;
+    width: 12em;
+    height: 12em;
+    display:block;
+    margin:auto
+  }
+
+  #mascota .mapa{
+    height: 100%;
+    background: transparent;
+  }
 
   @media (min-width: 768px) {
     #mascota .wrapper {
@@ -58,28 +79,22 @@
     }
   }
 
-  #mascota .contenido {
-    flex: 1;
-    margin: 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 1rem;
-  }
-
   #mascota aside {
     width: 100%;
-    background-color: red;
+    background-color: transparent;
     padding: 1rem 1rem 0 1rem;
   }
 
-  #mascota .aside-card {
-    max-height: calc(100vh - 90px);
-    overflow: auto;
-  }
-
-  #mascota .radio-container {
-    padding: 0 24px;
-    margin: 0;
-  }
+  #mascota .btn-1 {
+        border: black;
+        background-color: rgb(40, 167, 72);
+        padding: 14px 28px;
+        font-size: 16px;
+        cursor: pointer;
+        display: inline-block;
+        border-radius: 12px;
+        margin-top: 0.5em;
+        width: 100%;
+    }
 </style>
 

@@ -11,56 +11,120 @@
                 v-model="valid"
                 lazy-validation
                 >
-                    <v-text-field
-                    v-model="name"
-                    :counter="10"
-                    :rules="nameRules"
-                    label="Name"
-                    required
-                    ></v-text-field>
+                    <v-subheader><h1>Información Personal</h1></v-subheader>
+                    <v-divider/>
+                    <v-container>
+                        <v-layout>
+                            <v-flex
+                            xs12
+                            md6
+                            >
+                            <h3>¿Cuántas mascotas posee actualmente?</h3>
+                                <v-flex
+                                xs12
+                                md2>
+                                <v-select
+                                :items=[0,1,2,3,4]
+                                ></v-select>
+                                </v-flex>
+                            </v-flex>
 
-                    <v-text-field
-                    v-model="email"
-                    :rules="emailRules"
-                    label="E-mail"
-                    required
-                    ></v-text-field>
+                            <v-flex
+                            xs12
+                            md6
+                            >
+                            <h3>¿Hay menores de edad en la casa?</h3>
+                            <v-radio-group v-model="radioGroup">
+                                <v-radio
+                                    :label="`Si`"
+                                    :value="0"
+                                ></v-radio>
+                                <v-radio
+                                    :label="`No`"
+                                    :value="1"
+                                ></v-radio>
+                            </v-radio-group>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                    <v-container>
+                        <v-layout>
+                            <v-flex
+                            xs12
+                            md6
+                            >
+                            <h3>¿Está al tanto de los cuidados que requiere la mascota?</h3>
+                            <v-radio-group v-model="radioGroup">
+                                <v-radio
+                                    :label="`Si`"
+                                    :value="0"
+                                ></v-radio>
+                                <v-radio
+                                    :label="`No`"
+                                    :value="1"
+                                ></v-radio>
+                            </v-radio-group>
+                            </v-flex>
+                            <v-flex
+                            xs12
+                            md6
+                            >
+                            <h3>Tipo de vivienda</h3>
+                                <v-flex
+                                xs12
+                                md6>
+                                <v-select
+                                :items=items
+                                ></v-select>
+                                </v-flex>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                    <v-container>
+                        <h3>Motivación</h3>
+                        <v-layout>
+                            <v-textarea
+                            outline
+                            name="input-7-4"
+                            placeholder="Una breve explicación de la razón que le lleva a adoptar esta mascota"
+                            value=""
+                            ></v-textarea>
+                        </v-layout>
+                    </v-container>
 
-                    <v-select
-                    v-model="select"
-                    :items="items"
-                    :rules="[v => !!v || 'Item is required']"
-                    label="Item"
-                    required
-                    ></v-select>
-
-                    <v-checkbox
-                    v-model="checkbox"
-                    :rules="[v => !!v || 'You must agree to continue!']"
-                    label="Do you agree?"
-                    required
-                    ></v-checkbox>
-
+                    <v-subheader><h1>Información Legal</h1></v-subheader>
+                    <v-divider/>
+                    <v-container>
+                        <h3>Ley 20.380</h3>
+                        <p>Toda persona dueña de un animal debe darle alimento y albergue de acuerdo a sus necesidades mínimas y no restringir su libertad de movimiento de forma innecesaria, en especial si le causa sufrimiento o alteración de su desarrollo normal. Esto también se aplica al transporte de animales, que debe realizarse de tal forma que no cause maltrato y que esté acorde con la especie y medio de transporte utilizado.</p>
+                        <a href="http://maltratoanimal.cl/legislacion/ley-20-380-de-proteccion-animal/">Más detalles</a>
+                        <v-checkbox
+                        v-model="checkbox1"
+                        :label="'Declaro tener conocimiento y total entendimiento'"></v-checkbox>
+                    </v-container>
+                    <v-divider/>
+                    <v-container>
+                        <h3>Ley 21.020</h3>
+                        <p>La Ley de Tenencia Responsable de Mascotas y Animales de Compañía, conocida también como "Ley Cholito", establece una serie de obligaciones que una persona contrae cuando decide aceptar y mantener una mascota o animal de compañía.</p>
+                        <a href="https://www.leychile.cl/Navegar?idNorma=1106037">Más detalles</a>
+                        <v-checkbox
+                        v-model="checkbox2"
+                        :label="'Declaro tener conocimiento y total entendimiento'"></v-checkbox>
+                    </v-container>
+                    <v-divider/>
+                    <v-container>
+                        <h3>Incumplimiento</h3>
+                        <p>De obtener constantemente una calificación negativa en los distintos seguimientos a realizar, la organización se verá en la necesidad de acudir en ayuda de la mascota, rescatarla, y tomar las medidas necesarias según sea el caso. </p>
+                        <v-checkbox
+                        v-model="checkbox3"
+                        :label="'Declaro estar de acuerdo con las condiciones y brindarle el derecho a la organización'"></v-checkbox>
+                    </v-container>
                     <v-btn
                     :disabled="!valid"
                     color="success"
                     @click="validate"
                     >
-                    Validate
-                    </v-btn>
-
-                    <v-btn
-                    color="error"
-                    @click="reset"
-                    >
-                    Reset Form
-                    </v-btn>
-
-                    <v-btn
-                    color="warning"
-                    @click="resetValidation"
-                    >
-                    Reset Validation
+                    Enviar
                     </v-btn>
                 </v-form>
             </v-container>
@@ -85,6 +149,19 @@
             return {
                 michis: null,
                 valid: true,
+                checkbox1: true,
+                firstname: '',
+                lastname: '',
+                items: ['Casa con patio', 'Casa sin patio', 'Departamento con malla', 'Departamento sin malla'],
+                nameRules: [
+                    v => !!v || 'Name is required',
+                    v => v.length <= 10 || 'Name must be less than 10 characters'
+                ],
+                email: '',
+                emailRules: [
+                    v => !!v || 'E-mail is required',
+                    v => /.+@.+/.test(v) || 'E-mail must be valid'
+                ],
                 name: '',
                 nameRules: [
                     v => !!v || 'Name is required',
@@ -96,12 +173,6 @@
                     v => /.+@.+/.test(v) || 'E-mail must be valid'
                 ],
                 select: null,
-                items: [
-                    'Item 1',
-                    'Item 2',
-                    'Item 3',
-                    'Item 4'
-                ],
                 checkbox: false
             }
         },
@@ -114,23 +185,12 @@
     }
 
     @media (min-width: 768px) {
-        #formulario .wrapper {
-        display: grid;
-        grid-template-columns: 700px 1fr;
+        #formulario .formato{
+            width: 85%;
         }
 
-        #formulario .catalogo-grid {
-        flex: 1;
-        margin: 1rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 1rem;
-        }
-
-        #formulario aside {
-            width: 100%;
-            background-color: transparent;
-            padding: 0 1rem 1rem 1rem;
+        #formulario v-flex{
+            margin: 5px;
         }
     }
 </style>

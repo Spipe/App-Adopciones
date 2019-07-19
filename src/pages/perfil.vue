@@ -1,35 +1,30 @@
 <template>
     <div id="perfil">
         <header>
-            <navbar/>
+            <navbar active="/perfil"></navbar>
         </header>
         <main>
             <div class="wrapper">
-                <v-layout class="perfil-layout">
-                    <v-card class="perfil-card">
-                        <v-avatar
-                        :size="300">
-                            <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
-                        </v-avatar>
-                        <v-card-title primary-title>
-                        <div>
-                            <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-                            <div> {{ card_text }} </div>
-                        </div>
-                        </v-card-title>
-                    </v-card>
+                <v-layout class="perfil-layout" style="width: 100%">
+                    <perfil-card
+                        :nombre="organizacion.nombre"
+                        :correo="organizacion.correo"
+                        :comuna="organizacion.comuna"
+                        :latitud="organizacion.latitud"
+                        :longitud="organizacion.longitud"
+                        :telefono="organizacion.telefono"
+                        :region="organizacion.region">
+                    </perfil-card>
                 </v-layout>
                 <aside>
-                    <div class="catalogo-grid"> 
                         <mascota-small-card
-                        v-for="michi in michis"
-                        :key="michi.nombre"
-                        :nombre="michi.nombre"
-                        :esterilizado="michi.esterilizado"
-                        :adoptado="michi.adoptado"
-                        :imagen="michi.imagen">
+                            v-for="michi in michis"
+                            :key="michi.nombre"
+                            :nombre="michi.nombre"
+                            :esterilizado="michi.esterilizado"
+                            :adoptado="michi.adoptado"
+                            :imagen="michi.imagen">
                         </mascota-small-card>
-                    </div>
                 </aside>
             </div>
         </main>
@@ -42,20 +37,32 @@
 <script>
     import MascotaSmallCard from "../components/mascota-small-card"
     import Navbar from '../components/navbar.vue'
+    import PerfilCard from '../components/perfil-card.vue'
     import Pie from '../components/pie.vue'
     import axios from 'axios'
+
+
 
     export default{
         name: 'perfil',
         components: {
             MascotaSmallCard,
             Navbar,
+            PerfilCard,
             Pie
         },
         data (){
             return {
                 michis: null,
-                card_text: 'Lorem ipsum dolor sit amet.'
+                organizacion: {
+                    nombre: 'Organización Patitas',
+                    correo: 'correo@gmail.com',
+                    comuna: 'Curacaví',
+                    latitud: -33.4063,
+                    longitud: -71.1333,
+                    telefono: "+56 9 9876 5432",
+                    region: 'Región Metropolitana'
+                }
             }
         },
         mounted () {
@@ -77,36 +84,40 @@
 </script>
 
 <style>
-#perfil .wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-#perfil .perfil-layout {
-    display: flex;
-    flex-direction: column;
-    padding: 1%;
-    width: fit-content;
-}
-
-#perfil .perfil-card{
-    min-height: calc(100vh - 90px);
-}
-
-#perfil aside {
-    background-color: transparent;
-}
-
-  @media (min-width: 768px) {
     #perfil .wrapper {
-      display: grid;
-      grid-template-columns: 500px 1fr;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #perfil .perfil-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+        text-align: center;
+        width: fit-content;
     }
 
     #perfil aside {
-      padding: 0.5em 0 0,5rem 0.5rem !important;
-      display: grid;
-      grid-template: 150px;
+        background-color: transparent;
     }
-  }
+
+    #perfil h4 {
+        padding: 5px;
+    }
+
+    @media (min-width: 768px) {
+        #perfil .wrapper {
+            display: grid;
+            padding: 5px;
+            grid-template-columns: 300px 1fr;
+            grid-gap: 10px;
+        }
+
+        #perfil aside {
+            padding: 10px 10px 10px !important;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 2rem;
+        }
+    }
 </style>
