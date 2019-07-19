@@ -22,5 +22,9 @@
   code {
     font-family: monospace;
   }
+
+  .with-radius {
+    border-radius: 10px !important;
+  }
   
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div id="mascota">
         <header>
-            <navbar active="/mascota"></navbar>
+            <navbar active="/mascota/1"></navbar>
         </header>
         <main>
           <div class="wrapper">
@@ -9,30 +9,17 @@
               <informacion-mascota></informacion-mascota>
             </div>
             <aside >
-              <v-card class="aside-card with-radius mapa">
-                <v-img
-                  :src="imagen"
-                  class="foto-organizacion">
-                </v-img>
-                <h3>{{dueño}}</h3>
-                <h4>{{ correo }}</h4>
-                <div>{{ comuna }}, {{ region }}</div>
-                <GmapMap class="googlemap"
-                  :center="{lat: latt, lng: lngg}"
-                  :zoom="11"
-                  map-type-id="terrain"
-                  style="width: 300px; height: 300px; margin: 0 auto 0 auto;"
-                >
-                  <GmapMarker
-                    :key="index"
-                    v-for="(m, index) in markers"
-                    :position="m.position"
-                    :clickable="true"
-                    :draggable="true"
-                    @click="center=m.position"
-                  />
-                </GmapMap>
-              </v-card>
+              <v-layout class="perfil-layout" style="width: 100%; margin-right:0em" >
+                <perfil-card
+                  :nombre="organizacion.nombre"
+                  :correo="organizacion.correo"
+                  :comuna="organizacion.comuna"
+                  :latitud="organizacion.latitud"
+                  :longitud="organizacion.longitud"
+                  :telefono="organizacion.telefono"
+                  :region="organizacion.region">
+                </perfil-card>
+              </v-layout>
             </aside>                    
           </div>
         </main>
@@ -47,24 +34,29 @@
     import Navbar from '../components/navbar.vue'
     import InformacionMascota from '../components/informacion-mascota.vue'
     import Pie from '../components/pie.vue'
+    import PerfilCard from '../components/perfil-card.vue'
     export default {
+      components: {
+            Navbar,
+            Pie,
+            InformacionMascota,
+            PerfilCard
+        },
         name: 'mascota',
         data: ()=>{
           return{
             imagen:require('../assets/images/1.jpeg'),
-            dueño:'Felipito',
-            correo: 'correo@gmail.com',
-            comuna: 'Curacaví',
-            latt: -33.4063,
-            lngg: -71.1333,
-            region: 'Región Metropolitana'
+            organizacion: {
+                  nombre: 'Organización Patitas',
+                  correo: 'correo@gmail.com',
+                  comuna: 'Curacaví',
+                  latitud: -33.4063,
+                  longitud: -71.1333,
+                  telefono: "+56 9 9876 5432",
+                  region: 'Región Metropolitana'
+              }
           }
         },
-        components: {
-            Navbar,
-            Pie,
-            InformacionMascota
-        }
     }
 </script>
 
@@ -77,18 +69,9 @@
     text-align: center;
   }
 
-  #mascota .foto-organizacion{
-    border-radius: 100%;
-    width: 12em;
-    height: 12em;
-    display:block;
-    margin:auto;
-  }
-
   #mascota .mapa{
+    height: 100%;
     background: transparent;
-    text-align: center;
-
   }
 
   @media (min-width: 768px) {
@@ -100,6 +83,13 @@
     #mascota aside {
       padding: 1rem 0 1rem 1rem !important;
     }
+    #mascota .perfil-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+        text-align: center;
+    }
+    
   }
 
   #mascota aside {
@@ -116,11 +106,7 @@
         cursor: pointer;
         display: inline-block;
         border-radius: 12px;
-        margin-top: 0.5em;
-        
-  }
-  #mascota h4 {
-    padding: 5px;
-  }
+        margin-top: 0.2em;
+    }
 </style>
 

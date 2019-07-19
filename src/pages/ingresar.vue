@@ -71,7 +71,7 @@
                     :items="pelaje"
                     :loading="pelaje == null"
                     :rules="[v => !!v || 'Item is required']"
-                    prepend-icon="event"
+                    prepend-icon="pets"
                     label="Tipo de pelaje"
                     item-text="nombre"
                     item-value="codigo"
@@ -83,7 +83,7 @@
                     :items="patron"
                     :loading="patron == null"
                     :rules="[v => !!v || 'Item is required']"
-                    prepend-icon="event"
+                    prepend-icon="pets"
                     label="Patron del pelaje"                 
                     required>
                     </v-select>
@@ -93,12 +93,19 @@
                     :items="sexo"
                     :loading="sexo == null"
                     :rules="[v => !!v || 'Item is required']"
-                    prepend-icon="event"
+                    prepend-icon="pets"
                     label="Sexo"
                     required>
                     </v-select>
 
-                    
+                    <v-layout>
+                        <v-textarea style="padding: 0.5em;"
+                            name="input-7-1"
+                            box
+                            label="Ingrese una descripcion del michi o doggo"
+                            auto-grow>
+                        </v-textarea>
+                    </v-layout>
 
                 </v-form>
                 </v-flex>
@@ -163,3 +170,10 @@
     }
   }
 </script>
+
+<style>
+    #ingresar .Texto{
+        
+        width: 75%;
+    }
+</style>
