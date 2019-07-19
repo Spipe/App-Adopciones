@@ -13,6 +13,7 @@ import Formulario from './pages/formulario.vue'
 import IniciarSesion from './pages/iniciar.vue'
 import Seguimiento from './pages/seguimiento.vue'
 import Registrar from './pages/registrar.vue'
+import IngresarMascota from './pages/ingresar.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 import '@fortawesome/fontawesome-free/css/all.css'

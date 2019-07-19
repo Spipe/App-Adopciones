@@ -1,7 +1,7 @@
 <template>
     <div id="mascota">
         <header>
-            <navbar active="/mascota"></navbar>
+            <navbar active="/mascota/1"></navbar>
         </header>
         <main>
           <div class="wrapper">
@@ -9,13 +9,17 @@
               <informacion-mascota></informacion-mascota>
             </div>
             <aside >
-              <v-card class="aside-card with-radius mapa">
-                <v-img
-                  :src="imagen"
-                  class="foto-organizacion">
-                </v-img>
-                <h1>{{dueño}}</h1>
-              </v-card>
+              <v-layout class="perfil-layout" style="width: 100%; margin-right:0em" >
+                <perfil-card
+                  :nombre="organizacion.nombre"
+                  :correo="organizacion.correo"
+                  :comuna="organizacion.comuna"
+                  :latitud="organizacion.latitud"
+                  :longitud="organizacion.longitud"
+                  :telefono="organizacion.telefono"
+                  :region="organizacion.region">
+                </perfil-card>
+              </v-layout>
             </aside>                    
           </div>
         </main>
@@ -30,19 +34,29 @@
     import Navbar from '../components/navbar.vue'
     import InformacionMascota from '../components/informacion-mascota.vue'
     import Pie from '../components/pie.vue'
+    import PerfilCard from '../components/perfil-card.vue'
     export default {
+      components: {
+            Navbar,
+            Pie,
+            InformacionMascota,
+            PerfilCard
+        },
         name: 'mascota',
         data: ()=>{
           return{
             imagen:require('../assets/images/1.jpeg'),
-            dueño:'Felipito'
+            organizacion: {
+                  nombre: 'Organización Patitas',
+                  correo: 'correo@gmail.com',
+                  comuna: 'Curacaví',
+                  latitud: -33.4063,
+                  longitud: -71.1333,
+                  telefono: "+56 9 9876 5432",
+                  region: 'Región Metropolitana'
+              }
           }
         },
-        components: {
-            Navbar,
-            Pie,
-            InformacionMascota
-        }
     }
 </script>
 
@@ -53,14 +67,6 @@
     min-height: 100vh;
     padding: 0.5em;
     text-align: center;
-  }
-
-  #mascota .foto-organizacion{
-    border-radius: 100%;
-    width: 12em;
-    height: 12em;
-    display:block;
-    margin:auto
   }
 
   #mascota .mapa{
@@ -77,6 +83,13 @@
     #mascota aside {
       padding: 1rem 0 1rem 1rem !important;
     }
+    #mascota .perfil-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+        text-align: center;
+    }
+    
   }
 
   #mascota aside {
@@ -93,8 +106,7 @@
         cursor: pointer;
         display: inline-block;
         border-radius: 12px;
-        margin-top: 0.5em;
-        width: 100%;
+        margin-top: 0.2em;
     }
 </style>
 

@@ -10,10 +10,13 @@
             </v-carousel>
             <h1>{{ nombreA }}</h1>
             <p>{{description}}</p>
-            <p v-if="esterilizado">Esterilizado</p>
-            <button class="btn-1" v-if="estado">
+            <h4>{{product}}</h4>
+            <h4 v-if="esterilizado">Esterilizado {{sexo}}</h4>
+            <h4>{{color}} {{patron}}</h4>
+
+            <v-btn class="btn-1" v-if="estado" href="/" >
                 Estoy Interesado :)
-            </button>
+            </v-btn>
         </div>
 
     </div>
@@ -28,6 +31,9 @@
                 product: 'Michi ',
                 altext: 'Foto de la mascota',
                 description: 'Descripcion del michi puesto por quien lo esta dando en adopcion ',
+                sexo:"Masculino",
+                color:"Negro",
+                patron:"Manchas",
                 esterilizado: true,
                 estado: true,
                 items:[
@@ -70,5 +76,4 @@
     #elemento-seleccion .product-info {
         height: 100%;
     }
-
 </style>
