@@ -12,24 +12,24 @@
             lazy-validation>
 
             <v-text-field
-              v-model="rut"
-              :rules="rutRules"
+              v-model="correo"
+              :rules="correoRules"
               label="Correo"
               prepend-icon="email"
               required>
             </v-text-field>
 
             <v-text-field
-              v-model="rut"
-              :rules="rutRules"
+              v-model="contrasenia"
+              :rules="contraseniaRules"
               label="Contraseña"
               prepend-icon="lock"
               required>
             </v-text-field>
 
             <v-text-field
-              v-model="rut"
-              :rules="rutRules"
+              v-model="contraseniaC"
+              :rules="contraseniaCRules"
               label="Repetir contraseña"
               prepend-icon="lock"
               required>
@@ -90,35 +90,14 @@
             <v-divider></v-divider>
 
             <v-select
-              v-model="selectRegion"
-              :items="regiones"
-              :loading="regiones == null"
-              :rules="[v => !!v || 'Item is required']"
-              prepend-icon="event"
-              label="Región"
-              item-text="nombre"
-              item-value="codigo">
-            </v-select>
-
-            <v-select
-              v-model="selectProvincia"
-              :items="provincias"
-              :loading="provincias == null"
-              :rules="[v => !!v || 'Item is required']"
-              prepend-icon="event"
-              label="Provincia"
-              
-              >
-            </v-select>
-
-            <v-select
               v-model="selectComuna"
               :items="comunas"
               :loading="comunas == null"
               :rules="[v => !!v || 'Item is required']"
               prepend-icon="event"
               label="Comuna"
-              >
+              item-text="nombre"
+              item-value="codigo">
             </v-select>
 
             <v-btn
@@ -126,9 +105,9 @@
               round
               depressed
               block
-              @click="login"
+              @click="registrarUsuario"
               dark>
-              Entrar
+              Registrarme
             </v-btn>
 
           </v-form>
@@ -155,8 +134,6 @@
       Pie
     },
     data: () => ({
-      regiones: [],
-      provincias: [],
       comunas: [],
       valid: true,
       date: new Date().toISOString().substr(0, 10),
@@ -174,20 +151,53 @@
       checkbox: false
     }),
     mounted() {
-      axios.get('https://apis.digital.gob.cl/dpa/regiones')
+      axios.get('https://apis.digital.gob.cl/dpa/comunas')
         .then(response => {
-          this.regiones = response.data;
+          this.comunas = response.data;
         })
       
     },
     methods: {
-      login() {
+      registrarUsuario() {
+        for (let i = 0; i < this.$refs.form.$el.length; i++) {
+          const elemento = this.$refs.form.$el[i];
+          console.info(elemento.value);
+        }
+        
         axios({
           method: 'post',
-          url: `https://safe-fortress-62409.herokuapp.com/usuario`,
+          url: `https://safe-fortress-62409.herokuapp.com/usuario?tipo=1`,
           data: {
             correo: this.$refs.form.$el[0].value,
-            contrasenia: this.$refs.form.$el[1].value
+            contrasenia: this.$refs.form.$el[1].value,
+            rut: this.$refs.form.$el[3].value,
+            nombres: this.$refs.form.$el[4].value,
+            apellidos: this.$refs.form.$el[5].value,
+            nacimiento: this.$refs.form.$el[6].value,
+            direccion: "En tus pesadillas",
+            comunaId: 13
+          }
+        }).then(response => {
+          console.info(response.data);
+        });
+        
+      },
+      registrarOrganizacion() {
+        for (let i = 0; i < this.$refs.form.$el.length; i++) {
+          const elemento = this.$refs.form.$el[i];
+          console.info(elemento.value);
+        }
+        
+        axios({
+          method: 'post',
+          url: `https://safe-fortress-62409.herokuapp.com/usuario?tipo=2`,
+          data: {
+            correo: this.$refs.form.$el[0].value,
+            contrasenia: this.$refs.form.$el[1].value,
+            rut: this.$refs.form.$el[3].value,
+            nombre: this.$refs.form.$el[4].value,
+            direccion: "En tus pesadillas",
+            comunaId: 13
           }
         }).then(response => {
           console.info(response.data);

@@ -27,10 +27,6 @@
 </script>
 
 <style>
-    #elemento-catalogo .with-radius {
-        border-radius: 10px !important;
-    }
-
     #elemento-catalogo .foto-michi {
         max-height: 200px;
         box-sizing: border-box;

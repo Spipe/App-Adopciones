@@ -5,44 +5,25 @@
         </header>
         <main>
             <div class="wrapper">
-                <v-layout class="perfil-layout">
-                    <v-card class="perfil-card">
-                        <v-avatar :size="100" padding="15px">
-                            <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
-                        </v-avatar>
-                        <v-card-title primary-title class="primary-title">
-                            <div>
-                                <h3 class="headline mb-0">{{ nombre }}</h3>
-                                <h4>{{ correo }}</h4>
-                                <div>{{ comuna }}, {{ region }}</div>
-                                <br>
-                                <GmapMap
-                                        :center="{lat: latt, lng: lngg}"
-                                        :zoom="11"
-                                        map-type-id="terrain"
-                                        style="width: 300px; height: 300px"
-                                >
-                                    <GmapMarker
-                                            :key="index"
-                                            v-for="(m, index) in markers"
-                                            :position="m.position"
-                                            :clickable="true"
-                                            :draggable="true"
-                                            @click="center=m.position"
-                                    />
-                                </GmapMap>
-                            </div>
-                        </v-card-title>
-                    </v-card>
+                <v-layout class="perfil-layout" style="width: 100%">
+                    <perfil-card
+                        :nombre="organizacion.nombre"
+                        :correo="organizacion.correo"
+                        :comuna="organizacion.comuna"
+                        :latitud="organizacion.latitud"
+                        :longitud="organizacion.longitud"
+                        :telefono="organizacion.telefono"
+                        :region="organizacion.region">
+                    </perfil-card>
                 </v-layout>
                 <aside>
                         <mascota-small-card
-                        v-for="michi in michis"
-                        :key="michi.nombre"
-                        :nombre="michi.nombre"
-                        :esterilizado="michi.esterilizado"
-                        :adoptado="michi.adoptado"
-                        :imagen="michi.imagen">
+                            v-for="michi in michis"
+                            :key="michi.nombre"
+                            :nombre="michi.nombre"
+                            :esterilizado="michi.esterilizado"
+                            :adoptado="michi.adoptado"
+                            :imagen="michi.imagen">
                         </mascota-small-card>
                 </aside>
             </div>
@@ -56,6 +37,7 @@
 <script>
     import MascotaSmallCard from "../components/mascota-small-card"
     import Navbar from '../components/navbar.vue'
+    import PerfilCard from '../components/perfil-card.vue'
     import Pie from '../components/pie.vue'
     import axios from 'axios'
 
@@ -66,18 +48,21 @@
         components: {
             MascotaSmallCard,
             Navbar,
+            PerfilCard,
             Pie
         },
         data (){
             return {
                 michis: null,
-                card_text: 'Lorem ipsum dolor sit amet, brute iriure accusata ne mea. Eos suavitate referrentur ad, te duo agam libris qualisque, utroque quaestio accommodare no qui. Et percipit laboramus usu, no invidunt verterem nominati mel. Dolorem ancillae an mei, ut putant invenire splendide mel, ea nec propriae adipisci. Ignota salutandi accusamus in sed, et per malis fuisset, qui id ludus appareat.',
-                nombre: 'Organización Patitas',
-                correo: 'correo@gmail.com',
-                comuna: 'Curacaví',
-                latt: -33.4063,
-                lngg: -71.1333,
-                region: 'Región Metropolitana'
+                organizacion: {
+                    nombre: 'Organización Patitas',
+                    correo: 'correo@gmail.com',
+                    comuna: 'Curacaví',
+                    latitud: -33.4063,
+                    longitud: -71.1333,
+                    telefono: "+56 9 9876 5432",
+                    region: 'Región Metropolitana'
+                }
             }
         },
         mounted () {
@@ -99,56 +84,40 @@
 </script>
 
 <style>
-#perfil .wrapper {
-    display: flex;
-    flex-direction: column;
-}
-
-#perfil .perfil-layout {
-    display: flex;
-    flex-direction: column;
-    padding: 1%;
-    text-align: center;
-    width: fit-content;
-}
-
-#perfil .perfil-card{
-    min-height: calc(100vh - 90px);
-}
-
-#perfil .primary-title{
-    justify-content: center;
-}
-
-#perfil aside {
-    background-color: transparent;
-}
-
-#perfil h4 {
-    padding: 5px;
-}
-
-  @media (min-width: 768px) {
     #perfil .wrapper {
-        display: grid;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #perfil .perfil-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+        text-align: center;
+        width: fit-content;
+    }
+
+    #perfil aside {
+        background-color: transparent;
+    }
+
+    #perfil h4 {
         padding: 5px;
-        grid-template-columns: 300px 1fr;
-        grid-gap: 3rem;
     }
-      #perfil .perfil-layout {
-          padding-top: 15px;
-          display: flex;
-      }
 
-      #perfil v-avatar {
-          size: 15;
-      }
+    @media (min-width: 768px) {
+        #perfil .wrapper {
+            display: grid;
+            padding: 5px;
+            grid-template-columns: 300px 1fr;
+            grid-gap: 10px;
+        }
 
-      #perfil aside {
-          padding: 10px 10px 10px !important;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-          grid-gap: 2rem;
+        #perfil aside {
+            padding: 10px 10px 10px !important;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 2rem;
+        }
     }
-  }
 </style>
