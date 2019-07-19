@@ -4,36 +4,39 @@
             <navbar active="/seguimiento"></navbar>
         </header>
         <main>
-            <div class="perfil-mascota">
-                <v-layout>
-                    <v-flex xs12 sm6 offset-sm3>
-                        <v-card>
-                            <v-img
-                                    src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-                                    aspect-ratio="2.75"
-                            ></v-img>
-
+            <div class="wrapper">
+                <div class="">
+                    <v-layout class="perfil-layout">
+                        <v-card class="perfil-card">
+                            <v-avatar :size="100">
+                                <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
+                            </v-avatar>
                             <v-card-title primary-title>
                                 <div>
-                                    <h3 class="headline mb-0">{{ mascota.nombres }}</h3>
-                                    <div> Nacimiento: {{ mascota.nacimiento }} </div>
+                                    <h3 class="headline mb-0">Nombre Adoptante</h3>
+                                    <div> {{ card_text }} </div>
                                 </div>
                             </v-card-title>
-
-                            <v-card-actions>
-                                <v-btn flat color="orange">Share</v-btn>
-                                <v-btn flat color="orange">Explore</v-btn>
-                            </v-card-actions>
                         </v-card>
-                    </v-flex>
-                </v-layout>
-                info de mascota adoptada
-            </div>
-            <div class="perfil-adoptante">
-                info de adoptante y solicitud
-            </div>
-            <div class="adopcion">
-                estado de adopcion y actualizaciones
+                    </v-layout>
+                </div>
+                <aside>
+                    <div class="">
+                        <v-layout class="perfil-layout">
+                            <v-card class="perfil-card">
+                                <v-avatar :size="100">
+                                    <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
+                                </v-avatar>
+                                <v-card-title primary-title>
+                                    <div>
+                                        <h3 class="headline mb-0">Nombre Mascota</h3>
+                                        <div> {{ card_text }} </div>
+                                    </div>
+                                </v-card-title>
+                            </v-card>
+                        </v-layout>
+                    </div>
+                </aside>
             </div>
         </main>
         <footer>
@@ -53,6 +56,10 @@
         },
         data(){
             return {
+                _id: {
+                    nombres: 'Juan',
+                    apellidos: 'Pérez'
+                },
                 mascota: {
                     id: 2,
                     nombres: 'Turbochela',
@@ -75,7 +82,8 @@
                     numeromascotas: 4,
                     ninios: false,
                     razon: 'gay',
-                    seguimiento: true
+                    seguimiento: true,
+                    _id: 2,
                 },
                 adopciones: {
                     estado: true
@@ -95,4 +103,44 @@
     }
 </script>
 
-<style></style>
+<style>
+    #seguimiento .wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    #seguimiento .perfil-layout {
+        display: flex;
+        flex-direction: column;
+        padding: 1%;
+    }
+    #seguimiento .perfil-card{
+        min-height: calc(100vh - 90px);
+        padding: 5%;
+    }
+    @media (min-width: 768px) {
+        #seguimiento .wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        #seguimiento aside {
+            padding: 0.5em 0 0, 5rem 1rem !important;
+        }
+
+        #seguimiento .catalogo-grid {
+            flex: 1;
+            margin: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 1rem;
+        }
+
+        #seguimiento aside {
+            width: 100%;
+            background-color: transparent;
+            padding: 0 1rem 1rem 1rem;
+        }
+    }
+</style>

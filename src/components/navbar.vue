@@ -93,6 +93,16 @@
             titulo: 'Perfil',
             icono: 'portraits',
             ruta: "/perfil/1"
+          },
+          {
+            titulo: 'Formulario',
+            icono: 'avatar',
+            ruta: "/formulario"
+          },
+          {
+            titulo: 'Seguimiento',
+            icono: 'weekend',
+            ruta: "/seguimiento"
           }
         ]
       }
