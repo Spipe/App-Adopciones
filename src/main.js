@@ -9,6 +9,7 @@ import App from './app.vue'
 import Inicio from './pages/inicio.vue'
 import Catalogo from './pages/catalogo.vue'
 import Seleccion from './pages/seleccion.vue'
+import Perfil from './pages/perfil.vue'
 
 import 'vuetify/dist/vuetify.min.css'
 
@@ -31,6 +32,10 @@ const router = new VueRouter({
       {
         path: '/seleccion',
         component: Seleccion
+      },
+      {
+        path: '/perfil',
+        component: Perfil
       }
     ],
     mode: 'history'

@@ -75,6 +75,11 @@
             titulo: 'Mascota',
             icono: 'pet',
             ruta: "/mascota"
+          },
+          {
+            titulo: 'Perfil',
+            icono: 'portraits',
+            ruta: "/perfil"
           }
         ]
       }
