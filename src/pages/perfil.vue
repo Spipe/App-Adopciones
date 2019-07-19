@@ -1,14 +1,13 @@
 <template>
     <div id="perfil">
         <header>
-            <navbar/>
+            <navbar active="/perfil"></navbar>
         </header>
         <main>
             <div class="wrapper">
                 <v-layout class="perfil-layout">
                     <v-card class="perfil-card">
-                        <v-avatar
-                        :size="300">
+                        <v-avatar :size="100" padding="15px">
                             <img src="https://cdn.vuetifyjs.com/images/cards/desert.jpg" alt="avatar">
                         </v-avatar>
                         <v-card-title primary-title class="primary-title">
@@ -16,6 +15,7 @@
                                 <h3 class="headline mb-0">{{ nombre }}</h3>
                                 <h4>{{ correo }}</h4>
                                 <div>{{ comuna }}, {{ region }}</div>
+                                <br>
                                 <GmapMap
                                         :center="{lat: latt, lng: lngg}"
                                         :zoom="11"
@@ -124,19 +124,28 @@
     background-color: transparent;
 }
 
+#perfil h4 {
+    padding: 5px;
+}
+
   @media (min-width: 768px) {
     #perfil .wrapper {
-        flex: 1;
-        margin: 1rem;
         display: grid;
+        padding: 5px;
         grid-template-columns: 300px 1fr;
-        grid-gap: 1rem;
+        grid-gap: 3rem;
     }
+      #perfil .perfil-layout {
+          padding-top: 15px;
+          display: flex;
+      }
+
+      #perfil v-avatar {
+          size: 15;
+      }
 
       #perfil aside {
           padding: 10px 10px 10px !important;
-          flex: 1;
-          margin: 1rem;
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           grid-gap: 2rem;
