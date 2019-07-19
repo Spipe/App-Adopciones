@@ -70,6 +70,7 @@
     },
     data () {
       return {
+        dialog: false,
         michis: null,
         filtros: [
           {
